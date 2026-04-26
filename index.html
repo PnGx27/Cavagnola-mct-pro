@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 
 <html lang="it">
@@ -137,6 +136,14 @@
     <input type="number" id="valore" placeholder="Esempio: 154" />
   </div>
 
+  <div class="form-group">
+    <label>Mezzo o Terra?</label>
+    <select id="mezzoTerra">
+      <option value="mezzo">Mezzo</option>
+      <option value="terra">Terra</option>
+    </select>
+  </div>
+
   <div class="form-group" id="group-ritardo">
     <label>Ore di ritardo <span class="label-note">(solo se ritardo &gt; 1hr)</span></label>
     <input type="number" id="ritardo" min="0" value="0" />
@@ -223,14 +230,14 @@
   // ══════════════════════════════════════════════════════
   //  CONFIGURAZIONE FIREBASE — MODIFICA QUI
   // ══════════════════════════════════════════════════════
- const firebaseConfig = {
-  apiKey: "AIzaSyBlxrMo_o0IAu1r8o3bX4vYziyorZ9k-aw",
-  authDomain: "cavagnola-mct.firebaseapp.com",
-  projectId: "cavagnola-mct",
-  storageBucket: "cavagnola-mct.firebasestorage.app",
-  messagingSenderId: "361604589687",
-  appId: "1:361604589687:web:9d5755bfbba312b2413e72"
-};
+  const firebaseConfig = {
+    apiKey: "INSERISCI_LA_TUA_API_KEY",
+    authDomain: "INSERISCI_IL_TUO_AUTH_DOMAIN",
+    projectId: "INSERISCI_IL_TUO_PROJECT_ID",
+    storageBucket: "INSERISCI_IL_TUO_STORAGE_BUCKET",
+    messagingSenderId: "INSERISCI_IL_TUO_MESSAGING_SENDER_ID",
+    appId: "INSERISCI_IL_TUO_APP_ID"
+  };
 
   const app = initializeApp(firebaseConfig);
   const auth = getAuth(app);
@@ -238,7 +245,7 @@
 
   // UID admin — metti qui il tuo UID Firebase dopo il primo login
   // Puoi trovarlo in Firebase Console → Authentication → Users
-  const ADMIN_UID = "JyxdTgynV9cJihPWrKQzORBhM9m1";
+  const ADMIN_UID = "INSERISCI_IL_TUO_UID_ADMIN";
 
   // ══════════════════════════════════════════════════════
   //  DATI CLASSI (identici all'originale)
@@ -416,7 +423,12 @@
   });
 
   // ══════════════════════════════════════════════════════
-  //  LOGICA CALCOLO (identica all'originale)
+  //  MAPPA PREMI TERRA
+  // ══════════════════════════════════════════════════════
+  const prezzoTerra = { 3: 2, 7: 5, 11: 8, 20: 15, 23: 18, 27: 21, 35: 27, 42: 32 };
+
+  // ══════════════════════════════════════════════════════
+  //  LOGICA CALCOLO
   // ══════════════════════════════════════════════════════
   const tipoSel = document.getElementById("tipo");
   const labelValore = document.getElementById("label-valore");
@@ -429,12 +441,13 @@
   });
 
   document.getElementById("calcola").addEventListener("click", async () => {
-    const classe   = document.getElementById("classe").value;
-    const tipo     = document.getElementById("tipo").value;
-    const valore   = Number(document.getElementById("valore").value);
-    const ritardo  = Number(document.getElementById("ritardo").value);
-    const outputEl = document.getElementById("output");
-    const intervalli = dati[classe];
+    const classe      = document.getElementById("classe").value;
+    const tipo        = document.getElementById("tipo").value;
+    const valore      = Number(document.getElementById("valore").value);
+    const ritardo     = Number(document.getElementById("ritardo").value);
+    const mezzoTerra  = document.getElementById("mezzoTerra").value;
+    const outputEl    = document.getElementById("output");
+    const intervalli  = dati[classe];
 
     if (!intervalli || isNaN(valore) || document.getElementById("valore").value === "") {
       outputEl.textContent = "⚠️ Inserisci un valore valido.";
@@ -446,6 +459,7 @@
     let testoRisultato = "";
     let ritardoMsg = "";
     let risultato = null;
+    const etichetta = mezzoTerra === "terra" ? "Terra" : "Mezzo";
 
     if (tipo === "cntrCR") {
       ritardoMsg = ritardo > 0
@@ -458,14 +472,16 @@
         return valore >= minR && valore <= maxR;
       });
       if (risultato) {
-        testoRisultato = `✅ Cavagnola di: €${risultato.prezzo} — Contenitori SC: ${risultato.cntrSC}` + ritardoMsg;
+        const premioFinale = mezzoTerra === "terra" ? prezzoTerra[risultato.prezzo] : risultato.prezzo;
+        testoRisultato = `✅ Cavagnola ${etichetta}: €${premioFinale} — Contenitori SC: ${risultato.cntrSC}` + ritardoMsg;
       } else {
         testoRisultato = "⚠️ Valore fuori intervallo per cntr CR." + ritardoMsg;
       }
     } else {
       risultato = intervalli.find((el) => valore === el.prezzo);
       if (risultato) {
-        testoRisultato = `✅ cntr CR: da ${risultato.min} a ${risultato.max === Infinity ? 'oltre' : risultato.max} — Contenitori SC: ${risultato.cntrSC}`;
+        const premioFinale = mezzoTerra === "terra" ? prezzoTerra[risultato.prezzo] : risultato.prezzo;
+        testoRisultato = `✅ cntr CR: da ${risultato.min} a ${risultato.max === Infinity ? 'oltre' : risultato.max} — Premio ${etichetta}: €${premioFinale} — SC: ${risultato.cntrSC}`;
       } else {
         testoRisultato = "⚠️ Prezzo non trovato tra gli intervalli.";
       }
@@ -490,6 +506,7 @@
           classe,
           tipo,
           valore,
+          mezzoTerra,
           ritardo: tipo === "cntrCR" ? ritardo : 0,
           risultato: testoRisultato.replace("✅ ", ""),
           timestamp: Timestamp.now()
