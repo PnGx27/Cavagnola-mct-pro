@@ -1,0 +1,515 @@
+/* ═══════════════════════════════════════════════
+   CAVAGNOLA MCT PRO — STYLESHEET
+   Tema: Industriale portuale · Arancio su nero
+═══════════════════════════════════════════════ */
+
+:root {
+  --orange:    #f5a623;
+  --orange-dk: #d97115;
+  --orange-lt: #ffd080;
+  --bg:        #1a1a1a;
+  --bg2:       #242424;
+  --bg3:       #2e2e2e;
+  --border:    #3a3a3a;
+  --text:      #e8e8e8;
+  --text-dim:  #888;
+  --red:       #e05c5c;
+  --green:     #4caf70;
+  --panel-w:   360px;
+  --radius:    8px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  height: 100%;
+  overflow: hidden;
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Barlow Condensed', Arial, sans-serif;
+  font-size: 16px;
+}
+
+/* ─── SCREENS ──────────────────────────────── */
+.screen { display: none; }
+.screen.active { display: flex; flex-direction: column; height: 100vh; }
+
+/* ─── LOGIN / REGISTER SCREEN ──────────────── */
+#screen-login.active,
+#screen-register.active {
+  justify-content: center;
+  align-items: center;
+  background:
+    radial-gradient(ellipse at 20% 80%, rgba(245,166,35,0.08) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 20%, rgba(217,113,21,0.06) 0%, transparent 60%),
+    var(--bg);
+}
+
+.login-box {
+  width: 90%;
+  max-width: 360px;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 32px 28px 28px;
+  box-shadow: 0 0 40px rgba(0,0,0,0.6), 0 0 0 1px rgba(245,166,35,0.1);
+}
+
+.logo-area {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.logo-badge {
+  font-size: 2.4rem;
+  margin-bottom: 8px;
+  filter: drop-shadow(0 0 12px rgba(245,166,35,0.5));
+}
+
+.app-title {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 1.5rem;
+  color: var(--orange);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.app-sub {
+  font-size: 0.78rem;
+  color: var(--text-dim);
+  letter-spacing: 0.08em;
+  margin-top: 4px;
+}
+
+/* ─── FORM ELEMENTS ─────────────────────────── */
+.form-group {
+  margin-bottom: 14px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: 6px;
+}
+
+.label-note {
+  font-size: 0.7rem;
+  color: var(--text-dim);
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 10px 12px;
+  background: var(--bg3);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--text);
+  font-family: 'Barlow Condensed', Arial, sans-serif;
+  font-size: 1rem;
+  transition: border-color 0.2s;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.form-group select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23f5a623' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  padding-right: 36px;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: var(--orange);
+  box-shadow: 0 0 0 3px rgba(245,166,35,0.15);
+}
+
+.form-group input::placeholder { color: var(--text-dim); }
+
+/* ─── BUTTONS ────────────────────────────────── */
+.btn-primary {
+  display: block;
+  width: 100%;
+  padding: 13px;
+  background: var(--orange-dk);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius);
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+  margin-top: 8px;
+}
+
+.btn-primary:hover  { background: var(--orange); color: #1a1a1a; }
+.btn-primary:active { transform: scale(0.98); }
+
+.btn-secondary {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background: transparent;
+  color: var(--text-dim);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s;
+  margin-top: 10px;
+}
+
+.btn-secondary:hover { color: var(--orange); border-color: var(--orange); }
+
+.btn-calc { margin-top: 20px; font-size: 1.05rem; }
+
+.btn-icon {
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--text);
+  width: 38px;
+  height: 38px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.btn-icon:hover { background: var(--bg3); border-color: var(--orange); }
+
+.btn-danger-sm {
+  background: rgba(224,92,92,0.15);
+  color: var(--red);
+  border: 1px solid rgba(224,92,92,0.3);
+  border-radius: 6px;
+  padding: 8px 16px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-danger-sm:hover { background: rgba(224,92,92,0.3); }
+
+/* ─── ALERTS ─────────────────────────────────── */
+.alert-error {
+  background: rgba(224,92,92,0.15);
+  border: 1px solid rgba(224,92,92,0.4);
+  border-radius: var(--radius);
+  color: var(--red);
+  padding: 10px 14px;
+  font-size: 0.88rem;
+  margin-bottom: 14px;
+}
+
+.hidden { display: none !important; }
+
+/* ─── APP HEADER ─────────────────────────────── */
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 16px;
+  background: var(--bg2);
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+.header-left { display: flex; align-items: center; gap: 12px; }
+
+.header-icon {
+  font-size: 1.6rem;
+  filter: drop-shadow(0 0 6px rgba(245,166,35,0.5));
+}
+
+.header-title {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.95rem;
+  color: var(--orange);
+  letter-spacing: 0.1em;
+}
+
+.header-user {
+  font-size: 0.75rem;
+  color: var(--text-dim);
+  margin-top: 1px;
+}
+
+.header-right { display: flex; gap: 8px; }
+
+/* ─── APP MAIN ───────────────────────────────── */
+.app-main {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px 16px;
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(245,166,35,0.04) 0%, transparent 60%),
+    var(--bg);
+}
+
+.calc-card {
+  max-width: 420px;
+  margin: 0 auto;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 24px 20px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.4);
+}
+
+/* ─── OUTPUT ─────────────────────────────────── */
+.output-box {
+  margin-top: 18px;
+  padding: 16px;
+  border-radius: var(--radius);
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.9rem;
+  line-height: 1.7;
+  white-space: pre-line;
+  border: 1px solid var(--border);
+  background: var(--bg3);
+  animation: fadeIn 0.3s ease;
+}
+
+.output-success {
+  border-color: rgba(76,175,112,0.5);
+  background: rgba(76,175,112,0.07);
+  color: var(--green);
+}
+
+.output-error {
+  border-color: rgba(224,92,92,0.4);
+  background: rgba(224,92,92,0.07);
+  color: var(--red);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ─── SIDE PANELS ────────────────────────────── */
+.side-panel {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: var(--panel-w);
+  max-width: 100vw;
+  height: 100vh;
+  background: var(--bg2);
+  border-left: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  z-index: 200;
+  transition: right 0.3s cubic-bezier(0.4,0,0.2,1);
+}
+
+.side-panel.open { right: 0; }
+
+.panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 16px 14px;
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+.panel-header h2 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--orange);
+  letter-spacing: 0.05em;
+}
+
+.panel-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 14px;
+}
+
+.panel-footer {
+  padding: 14px;
+  border-top: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+/* ─── OVERLAY ────────────────────────────────── */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  z-index: 100;
+  display: none;
+  backdrop-filter: blur(2px);
+}
+
+.overlay.active { display: block; }
+
+/* ─── STORICO CARDS ──────────────────────────── */
+.storico-card {
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 12px;
+  margin-bottom: 10px;
+  position: relative;
+  animation: fadeIn 0.25s ease;
+}
+
+.storico-date    { font-size: 0.72rem; color: var(--text-dim); margin-bottom: 4px; }
+.storico-classe  { font-size: 0.82rem; color: var(--orange); font-weight: 600; letter-spacing: 0.05em; margin-bottom: 3px; }
+.storico-valore  { font-size: 0.78rem; color: var(--text-dim); }
+.storico-risultato {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.8rem;
+  color: var(--green);
+  margin-top: 6px;
+}
+
+.btn-del-item {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: transparent;
+  border: none;
+  font-size: 0.85rem;
+  cursor: pointer;
+  opacity: 0.5;
+  transition: opacity 0.2s;
+}
+
+.btn-del-item:hover { opacity: 1; }
+
+.empty-state {
+  text-align: center;
+  color: var(--text-dim);
+  font-size: 0.88rem;
+  padding: 30px 0;
+}
+
+/* ─── ADMIN PANEL ────────────────────────────── */
+.admin-summary {
+  background: rgba(245,166,35,0.08);
+  border: 1px solid rgba(245,166,35,0.2);
+  border-radius: 8px;
+  padding: 12px 14px;
+  font-size: 0.88rem;
+  color: var(--orange-lt);
+  margin-bottom: 14px;
+  letter-spacing: 0.04em;
+}
+
+.admin-user-block {
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 12px;
+  margin-bottom: 12px;
+}
+
+.admin-user-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.9rem;
+  color: var(--orange);
+  margin-bottom: 10px;
+}
+
+.admin-count {
+  margin-left: auto;
+  font-size: 0.72rem;
+  color: var(--text-dim);
+  background: var(--bg);
+  padding: 2px 7px;
+  border-radius: 10px;
+}
+
+.admin-calc-row {
+  display: grid;
+  grid-template-columns: auto auto 1fr;
+  gap: 8px;
+  align-items: baseline;
+  padding: 5px 0;
+  border-top: 1px solid var(--border);
+  font-size: 0.76rem;
+}
+
+.admin-date   { color: var(--text-dim); }
+.admin-classe { color: var(--orange-lt); font-weight: 600; }
+.admin-res    { color: var(--text); text-align: right; font-family: 'Share Tech Mono', monospace; font-size: 0.72rem; }
+
+.admin-more {
+  font-size: 0.75rem;
+  color: var(--text-dim);
+  text-align: right;
+  margin-top: 6px;
+}
+
+/* ─── GOOGLE BUTTON ─────────────────────────── */
+.btn-google {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  padding: 11px;
+  background: #fff;
+  color: #333;
+  border: 1.5px solid #ddd;
+  border-radius: var(--radius);
+  font-family: 'Barlow Condensed', Arial, sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, box-shadow 0.2s;
+  margin-top: 8px;
+}
+
+.btn-google:hover {
+  background: #f5f5f5;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 14px 0 0;
+  color: var(--text-dim);
+  font-size: 0.78rem;
+}
+
+.divider::before,
+.divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+/* ─── SCROLLBAR ──────────────────────────────── */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--bg2); }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--orange-dk); }
+
+/* ─── RESPONSIVE ─────────────────────────────── */
+@media (max-width: 400px) {
+  .login-box { padding: 24px 18px; }
+  .calc-card { padding: 18px 14px; }
+  .side-panel { width: 100vw; }
+}
