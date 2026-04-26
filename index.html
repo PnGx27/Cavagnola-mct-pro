@@ -42,6 +42,11 @@
 </div>
 
 <button class="btn-primary" id="btn-login">ACCEDI</button>
+<div class="divider"><span>oppure</span></div>
+<button class="btn-google" id="btn-login-google">
+  <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" width="20" height="20" alt="Google" />
+  Accedi con Google
+</button>
 <button class="btn-secondary" id="btn-goto-register">Non hai un account? Registrati</button>
 ```
 
@@ -210,7 +215,9 @@
     signInWithEmailAndPassword,
     signOut,
     onAuthStateChanged,
-    updateProfile
+    updateProfile,
+    GoogleAuthProvider,
+    signInWithPopup
   } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
   import {
     getFirestore,
@@ -246,6 +253,7 @@
   // UID admin — metti qui il tuo UID Firebase dopo il primo login
   // Puoi trovarlo in Firebase Console → Authentication → Users
   const ADMIN_UID = "JyxdTgynV9cJihPWrKQzORBhM9m1";
+
   // ══════════════════════════════════════════════════════
   //  DATI CLASSI (identici all'originale)
   // ══════════════════════════════════════════════════════
@@ -386,6 +394,28 @@
 
   document.getElementById("btn-logout").addEventListener("click", async () => {
     await signOut(auth);
+  });
+
+  // Login con Google
+  const googleProvider = new GoogleAuthProvider();
+  document.getElementById("btn-login-google").addEventListener("click", async () => {
+    try {
+      const cred = await signInWithPopup(auth, googleProvider);
+      const user = cred.user;
+      // Salva profilo su Firestore se è la prima volta
+      const userRef = doc(db, "users", user.uid);
+      const userSnap = await getDoc(userRef);
+      if (!userSnap.exists()) {
+        await setDoc(userRef, {
+          name: user.displayName || user.email,
+          email: user.email,
+          createdAt: Timestamp.now(),
+          role: "user"
+        });
+      }
+    } catch (e) {
+      showError("login-error", tradurciErrore(e.code));
+    }
   });
 
   document.getElementById("btn-goto-register").addEventListener("click", () => showScreen("screen-register"));
