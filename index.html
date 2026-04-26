@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="it">
 <head>
   <meta charset="UTF-8" />
@@ -15,6 +16,11 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+
+<!-- ═══════════════════════════════════════════
+     SCHERMATA LOGIN
+═══════════════════════════════════════════ -->
+
 <div id="screen-login" class="screen active">
   <div class="login-box">
     <div class="logo-area">
@@ -22,24 +28,35 @@
       <h1 class="app-title">CAVAGNOLA MCT</h1>
       <p class="app-sub">Sistema Professionale · By AC</p>
     </div>
-    <div id="login-error" class="alert-error hidden"></div>
-    <div class="form-group">
-      <label>Email</label>
-      <input type="email" id="login-email" placeholder="utente@email.com" autocomplete="email" />
-    </div>
-    <div class="form-group">
-      <label>Password</label>
-      <input type="password" id="login-password" placeholder="••••••••" autocomplete="current-password" />
-    </div>
-    <button class="btn-primary" id="btn-login">ACCEDI</button>
-    <div class="divider"><span>oppure</span></div>
-    <button class="btn-google" id="btn-login-google">
-      <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" width="20" height="20" alt="Google" />
-      Accedi con Google
-    </button>
-    <button class="btn-secondary" id="btn-goto-register">Non hai un account? Registrati</button>
+
+```
+<div id="login-error" class="alert-error hidden"></div>
+
+<div class="form-group">
+  <label>Email</label>
+  <input type="email" id="login-email" placeholder="utente@email.com" autocomplete="email" />
+</div>
+<div class="form-group">
+  <label>Password</label>
+  <input type="password" id="login-password" placeholder="••••••••" autocomplete="current-password" />
+</div>
+
+<button class="btn-primary" id="btn-login">ACCEDI</button>
+<div class="divider"><span>oppure</span></div>
+<button class="btn-google" id="btn-login-google">
+  <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" width="20" height="20" alt="Google" />
+  Accedi con Google
+</button>
+<button class="btn-secondary" id="btn-goto-register">Non hai un account? Registrati</button>
+```
+
   </div>
 </div>
+
+<!-- ═══════════════════════════════════════════
+     SCHERMATA REGISTRAZIONE
+═══════════════════════════════════════════ -->
+
 <div id="screen-register" class="screen">
   <div class="login-box">
     <div class="logo-area">
@@ -47,24 +64,38 @@
       <h1 class="app-title">REGISTRAZIONE</h1>
       <p class="app-sub">Crea il tuo account</p>
     </div>
-    <div id="register-error" class="alert-error hidden"></div>
-    <div class="form-group">
-      <label>Nome utente</label>
-      <input type="text" id="reg-name" placeholder="Es: Mario Rossi" />
-    </div>
-    <div class="form-group">
-      <label>Email</label>
-      <input type="email" id="reg-email" placeholder="utente@email.com" />
-    </div>
-    <div class="form-group">
-      <label>Password</label>
-      <input type="password" id="reg-password" placeholder="Min. 6 caratteri" />
-    </div>
-    <button class="btn-primary" id="btn-register">CREA ACCOUNT</button>
-    <button class="btn-secondary" id="btn-goto-login">Hai già un account? Accedi</button>
+
+```
+<div id="register-error" class="alert-error hidden"></div>
+
+<div class="form-group">
+  <label>Nome utente</label>
+  <input type="text" id="reg-name" placeholder="Es: Mario Rossi" />
+</div>
+<div class="form-group">
+  <label>Email</label>
+  <input type="email" id="reg-email" placeholder="utente@email.com" />
+</div>
+<div class="form-group">
+  <label>Password</label>
+  <input type="password" id="reg-password" placeholder="Min. 6 caratteri" />
+</div>
+
+<button class="btn-primary" id="btn-register">CREA ACCOUNT</button>
+<button class="btn-secondary" id="btn-goto-login">Hai già un account? Accedi</button>
+```
+
   </div>
 </div>
+
+<!-- ═══════════════════════════════════════════
+     SCHERMATA PRINCIPALE APP
+═══════════════════════════════════════════ -->
+
 <div id="screen-app" class="screen">
+
+  <!-- HEADER -->
+
   <header class="app-header">
     <div class="header-left">
       <span class="header-icon">⚓</span>
@@ -75,10 +106,14 @@
     </div>
     <div class="header-right">
       <button class="btn-icon" id="btn-storico" title="Storico">📋</button>
+      <button class="btn-icon" id="btn-supporto" title="Assistenza">❓</button>
       <button class="btn-icon" id="btn-admin" title="Admin Panel" style="display:none">🛡️</button>
       <button class="btn-icon" id="btn-logout" title="Esci">⏻</button>
     </div>
   </header>
+
+  <!-- CALCOLATRICE -->
+
   <main class="app-main">
     <div class="calc-card">
       <div class="form-group">
@@ -92,33 +127,47 @@
           <option value="ClasseRoRo">Classe RoRo</option>
         </select>
       </div>
-      <div class="form-group">
-        <label>cntr CR o Cavagnola?</label>
-        <select id="tipo">
-          <option value="cntrCR">cntr CR</option>
-          <option value="prezzo">Prezzo (€)</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label id="label-valore">Quanti cntr ha fatto la CR?</label>
-        <input type="number" id="valore" placeholder="Esempio: 154" />
-      </div>
-      <div class="form-group">
-        <label>Mezzo o Terra?</label>
-        <select id="mezzoTerra">
-          <option value="mezzo">Mezzo</option>
-          <option value="terra">Terra</option>
-        </select>
-      </div>
-      <div class="form-group" id="group-ritardo">
-        <label>Ore di ritardo <span class="label-note">(solo se ritardo &gt; 1hr)</span></label>
-        <input type="number" id="ritardo" min="0" value="0" />
-      </div>
-      <button class="btn-primary btn-calc" id="calcola">CALCOLA</button>
-      <div id="output" class="output-box hidden"></div>
-    </div>
+
+```
+  <div class="form-group">
+    <label>cntr CR o Cavagnola?</label>
+    <select id="tipo">
+      <option value="cntrCR">cntr CR</option>
+      <option value="prezzo">Prezzo (€)</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label id="label-valore">Quanti cntr ha fatto la CR?</label>
+    <input type="number" id="valore" placeholder="Esempio: 154" />
+  </div>
+
+  <div class="form-group">
+    <label>Mezzo o Terra?</label>
+    <select id="mezzoTerra">
+      <option value="mezzo">Mezzo</option>
+      <option value="terra">Terra</option>
+    </select>
+  </div>
+
+  <div class="form-group" id="group-ritardo">
+    <label>Ore di ritardo <span class="label-note">(solo se ritardo &gt; 1hr)</span></label>
+    <input type="number" id="ritardo" min="0" value="0" />
+  </div>
+
+  <button class="btn-primary btn-calc" id="calcola">CALCOLA</button>
+
+  <div id="output" class="output-box hidden"></div>
+</div>
+```
+
   </main>
 </div>
+
+<!-- ═══════════════════════════════════════════
+     PANNELLO STORICO (slide-over)
+═══════════════════════════════════════════ -->
+
 <div id="panel-storico" class="side-panel">
   <div class="panel-header">
     <h2>📋 Il Tuo Storico</h2>
@@ -131,6 +180,11 @@
     <button class="btn-danger-sm" id="btn-clear-storico">🗑 Cancella storico</button>
   </div>
 </div>
+
+<!-- ═══════════════════════════════════════════
+     PANNELLO ADMIN (slide-over)
+═══════════════════════════════════════════ -->
+
 <div id="panel-admin" class="side-panel">
   <div class="panel-header">
     <h2>🛡️ Admin Panel</h2>
@@ -140,8 +194,55 @@
     <p class="empty-state">Caricamento...</p>
   </div>
 </div>
+
+<!-- PANNELLO SUPPORTO -->
+
+<div id="panel-supporto" class="side-panel">
+  <div class="panel-header">
+    <h2>❓ Assistenza</h2>
+    <button class="btn-icon" id="btn-close-supporto">✕</button>
+  </div>
+  <div class="panel-content">
+    <p class="support-intro">Hai un problema o una domanda? Apri un ticket e ti rispondo il prima possibile.</p>
+    <div id="supporto-success" class="alert-success hidden">✅ Ticket inviato! Ti risponderemo presto.</div>
+    <div id="supporto-error" class="alert-error hidden"></div>
+    <div class="form-group">
+      <label>Oggetto</label>
+      <input type="text" id="ticket-titolo" placeholder="Es: Problema con il calcolo" />
+    </div>
+    <div class="form-group">
+      <label>Categoria</label>
+      <select id="ticket-categoria">
+        <option value="Bug">🐛 Bug / Errore</option>
+        <option value="Domanda">❓ Domanda</option>
+        <option value="Suggerimento">💡 Suggerimento</option>
+        <option value="Altro">📌 Altro</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Messaggio</label>
+      <textarea id="ticket-messaggio" placeholder="Descrivi il problema..." rows="4"></textarea>
+    </div>
+    <button class="btn-primary" id="btn-invia-ticket">📨 INVIA TICKET</button>
+  </div>
+</div>
+
+<!-- OVERLAY -->
+
 <div id="overlay" class="overlay"></div>
+
+<!-- ═══════════════════════════════════════════
+     EMAILJS + FIREBASE SDK
+═══════════════════════════════════════════ -->
+
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
 <script type="module">
+  // ─────────────────────────────────────────────────────────────
+  //  ⚠️  SOSTITUISCI QUESTI VALORI CON LA TUA CONFIGURAZIONE FIREBASE
+  //      Vai su: https://console.firebase.google.com
+  //      Progetto → Impostazioni → Le tue app → Web → Configurazione
+  // ─────────────────────────────────────────────────────────────
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
   import {
     getAuth,
@@ -168,6 +269,9 @@
     Timestamp
   } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
+  // ══════════════════════════════════════════════════════
+  //  CONFIGURAZIONE FIREBASE — MODIFICA QUI
+  // ══════════════════════════════════════════════════════
   const firebaseConfig = {
   apiKey: "AIzaSyBlxrMo_o0IAu1r8o3bX4vYziyorZ9k-aw",
   authDomain: "cavagnola-mct.firebaseapp.com",
@@ -178,13 +282,17 @@
 };
 
 
-  const ADMIN_UID = "JyxdTgynV9cJihPWrKQzORBhM9m1";
-
-
   const app = initializeApp(firebaseConfig);
   const auth = getAuth(app);
   const db = getFirestore(app);
 
+  // UID admin — metti qui il tuo UID Firebase dopo il primo login
+  // Puoi trovarlo in Firebase Console → Authentication → Users
+  const ADMIN_UID = "JyxdTgynV9cJihPWrKQzORBhM9m1";
+
+  // ══════════════════════════════════════════════════════
+  //  DATI CLASSI (identici all'originale)
+  // ══════════════════════════════════════════════════════
   const dati = {
     Classe1: [
       { min: 135, max: 144, prezzo: 3,  cntrSC: 32 },
@@ -248,11 +356,15 @@
     ],
   };
 
-  const prezzoTerra = { 3: 2, 7: 5, 11: 8, 20: 15, 23: 18, 27: 21, 35: 27, 42: 32 };
-
+  // ══════════════════════════════════════════════════════
+  //  STATO GLOBALE
+  // ══════════════════════════════════════════════════════
   let currentUser = null;
   let isAdmin = false;
 
+  // ══════════════════════════════════════════════════════
+  //  UTILITY UI
+  // ══════════════════════════════════════════════════════
   function showScreen(id) {
     document.querySelectorAll(".screen").forEach(s => s.classList.remove("active"));
     document.getElementById(id).classList.add("active");
@@ -281,22 +393,12 @@
     return d.toLocaleString("it-IT", { day: "2-digit", month: "2-digit", year: "numeric", hour: "2-digit", minute: "2-digit" });
   }
 
-  function tradurciErrore(code) {
-    const map = {
-      "auth/invalid-email": "Email non valida.",
-      "auth/user-not-found": "Utente non trovato.",
-      "auth/wrong-password": "Password errata.",
-      "auth/email-already-in-use": "Email già registrata.",
-      "auth/weak-password": "Password troppo debole.",
-      "auth/invalid-credential": "Credenziali non valide.",
-      "auth/too-many-requests": "Troppi tentativi. Riprova tra poco.",
-    };
-    return map[code] || "Errore: " + code;
-  }
-
+  // ══════════════════════════════════════════════════════
+  //  AUTH — LOGIN / REGISTRAZIONE / LOGOUT
+  // ══════════════════════════════════════════════════════
   document.getElementById("btn-login").addEventListener("click", async () => {
     const email = document.getElementById("login-email").value.trim();
-    const pass = document.getElementById("login-password").value;
+    const pass  = document.getElementById("login-password").value;
     if (!email || !pass) return showError("login-error", "Compila tutti i campi.");
     try {
       await signInWithEmailAndPassword(auth, email, pass);
@@ -306,16 +408,20 @@
   });
 
   document.getElementById("btn-register").addEventListener("click", async () => {
-    const name = document.getElementById("reg-name").value.trim();
+    const name  = document.getElementById("reg-name").value.trim();
     const email = document.getElementById("reg-email").value.trim();
-    const pass = document.getElementById("reg-password").value;
+    const pass  = document.getElementById("reg-password").value;
     if (!name || !email || !pass) return showError("register-error", "Compila tutti i campi.");
     if (pass.length < 6) return showError("register-error", "Password minimo 6 caratteri.");
     try {
       const cred = await createUserWithEmailAndPassword(auth, email, pass);
       await updateProfile(cred.user, { displayName: name });
+      // Salva profilo su Firestore
       await setDoc(doc(db, "users", cred.user.uid), {
-        name, email, createdAt: Timestamp.now(), role: "user"
+        name,
+        email,
+        createdAt: Timestamp.now(),
+        role: "user"
       });
     } catch (e) {
       showError("register-error", tradurciErrore(e.code));
@@ -326,11 +432,13 @@
     await signOut(auth);
   });
 
+  // Login con Google
   const googleProvider = new GoogleAuthProvider();
   document.getElementById("btn-login-google").addEventListener("click", async () => {
     try {
       const cred = await signInWithPopup(auth, googleProvider);
       const user = cred.user;
+      // Salva profilo su Firestore se è la prima volta
       const userRef = doc(db, "users", user.uid);
       const userSnap = await getDoc(userRef);
       if (!userSnap.exists()) {
@@ -349,6 +457,22 @@
   document.getElementById("btn-goto-register").addEventListener("click", () => showScreen("screen-register"));
   document.getElementById("btn-goto-login").addEventListener("click", () => showScreen("screen-login"));
 
+  function tradurciErrore(code) {
+    const map = {
+      "auth/invalid-email": "Email non valida.",
+      "auth/user-not-found": "Utente non trovato.",
+      "auth/wrong-password": "Password errata.",
+      "auth/email-already-in-use": "Email già registrata.",
+      "auth/weak-password": "Password troppo debole.",
+      "auth/invalid-credential": "Credenziali non valide.",
+      "auth/too-many-requests": "Troppi tentativi. Riprova tra poco.",
+    };
+    return map[code] || "Errore: " + code;
+  }
+
+  // ══════════════════════════════════════════════════════
+  //  AUTH STATE OBSERVER
+  // ══════════════════════════════════════════════════════
   onAuthStateChanged(auth, async (user) => {
     if (user) {
       currentUser = user;
@@ -363,6 +487,14 @@
     }
   });
 
+  // ══════════════════════════════════════════════════════
+  //  MAPPA PREMI TERRA
+  // ══════════════════════════════════════════════════════
+  const prezzoTerra = { 3: 2, 7: 5, 11: 8, 20: 15, 23: 18, 27: 21, 35: 27, 42: 32 };
+
+  // ══════════════════════════════════════════════════════
+  //  LOGICA CALCOLO
+  // ══════════════════════════════════════════════════════
   const tipoSel = document.getElementById("tipo");
   const labelValore = document.getElementById("label-valore");
   const groupRitardo = document.getElementById("group-ritardo");
@@ -374,13 +506,13 @@
   });
 
   document.getElementById("calcola").addEventListener("click", async () => {
-    const classe = document.getElementById("classe").value;
-    const tipo = document.getElementById("tipo").value;
-    const valore = Number(document.getElementById("valore").value);
-    const ritardo = Number(document.getElementById("ritardo").value);
-    const mezzoTerra = document.getElementById("mezzoTerra").value;
-    const outputEl = document.getElementById("output");
-    const intervalli = dati[classe];
+    const classe      = document.getElementById("classe").value;
+    const tipo        = document.getElementById("tipo").value;
+    const valore      = Number(document.getElementById("valore").value);
+    const ritardo     = Number(document.getElementById("ritardo").value);
+    const mezzoTerra  = document.getElementById("mezzoTerra").value;
+    const outputEl    = document.getElementById("output");
+    const intervalli  = dati[classe];
 
     if (!intervalli || isNaN(valore) || document.getElementById("valore").value === "") {
       outputEl.textContent = "⚠️ Inserisci un valore valido.";
@@ -396,7 +528,7 @@
 
     if (tipo === "cntrCR") {
       ritardoMsg = ritardo > 0
-        ? "\nRitardo: " + ritardo + "h (-" + (ritardo * 10) + "%) → soglie abbassate del " + (ritardo * 10) + "%"
+        ? `\nRitardo: ${ritardo}h (-${ritardo * 10}%) → soglie abbassate del ${ritardo * 10}%`
         : "\nNessun ritardo applicato.";
       const fattore = ritardo > 0 ? (1 - 0.10 * ritardo) : 1;
       risultato = intervalli.find((el) => {
@@ -406,7 +538,7 @@
       });
       if (risultato) {
         const premioFinale = mezzoTerra === "terra" ? prezzoTerra[risultato.prezzo] : risultato.prezzo;
-        testoRisultato = "✅ Cavagnola " + etichetta + ": €" + premioFinale + " — Contenitori SC: " + risultato.cntrSC + ritardoMsg;
+        testoRisultato = `✅ Cavagnola ${etichetta}: €${premioFinale} — Contenitori SC: ${risultato.cntrSC}` + ritardoMsg;
       } else {
         testoRisultato = "⚠️ Valore fuori intervallo per cntr CR." + ritardoMsg;
       }
@@ -414,7 +546,7 @@
       risultato = intervalli.find((el) => valore === el.prezzo);
       if (risultato) {
         const premioFinale = mezzoTerra === "terra" ? prezzoTerra[risultato.prezzo] : risultato.prezzo;
-        testoRisultato = "✅ cntr CR: da " + risultato.min + " a " + (risultato.max === Infinity ? "oltre" : risultato.max) + " — Premio " + etichetta + ": €" + premioFinale + " — SC: " + risultato.cntrSC;
+        testoRisultato = `✅ cntr CR: da ${risultato.min} a ${risultato.max === Infinity ? 'oltre' : risultato.max} — Premio ${etichetta}: €${premioFinale} — SC: ${risultato.cntrSC}`;
       } else {
         testoRisultato = "⚠️ Prezzo non trovato tra gli intervalli.";
       }
@@ -430,12 +562,16 @@
       outputEl.classList.remove("output-success");
     }
 
+    // Salva su Firestore se c'è un risultato valido e utente loggato
     if (currentUser && risultato) {
       try {
         await addDoc(collection(db, "calcoli"), {
           uid: currentUser.uid,
           userName: currentUser.displayName || currentUser.email,
-          classe, tipo, valore, mezzoTerra,
+          classe,
+          tipo,
+          valore,
+          mezzoTerra,
           ritardo: tipo === "cntrCR" ? ritardo : 0,
           risultato: testoRisultato.replace("✅ ", ""),
           timestamp: Timestamp.now()
@@ -446,32 +582,53 @@
     }
   });
 
+  // ══════════════════════════════════════════════════════
+  //  STORICO UTENTE
+  // ══════════════════════════════════════════════════════
   document.getElementById("btn-storico").addEventListener("click", async () => {
     openPanel("panel-storico");
     const listEl = document.getElementById("storico-list");
     listEl.innerHTML = "<p class='empty-state'>Caricamento...</p>";
+
     try {
-      const q = query(collection(db, "calcoli"), where("uid", "==", currentUser.uid), orderBy("timestamp", "desc"));
+      const q = query(
+        collection(db, "calcoli"),
+        where("uid", "==", currentUser.uid),
+        orderBy("timestamp", "desc")
+      );
       const snap = await getDocs(q);
-      if (snap.empty) { listEl.innerHTML = "<p class='empty-state'>Nessun calcolo ancora.</p>"; return; }
+      if (snap.empty) {
+        listEl.innerHTML = "<p class='empty-state'>Nessun calcolo ancora.</p>";
+        return;
+      }
       listEl.innerHTML = "";
       snap.forEach(docSnap => {
         const d = docSnap.data();
         const card = document.createElement("div");
         card.className = "storico-card";
-        card.innerHTML = "<div class='storico-date'>" + formatDate(d.timestamp) + "</div><div class='storico-classe'>" + d.classe + " · " + (d.tipo === "cntrCR" ? "cntr CR" : "Prezzo") + "</div><div class='storico-valore'>Input: " + d.valore + (d.ritardo > 0 ? " · Ritardo: " + d.ritardo + "h" : "") + "</div><div class='storico-risultato'>" + d.risultato + "</div><button class='btn-del-item' data-id='" + docSnap.id + "'>🗑</button>";
+        card.innerHTML = `
+          <div class="storico-date">${formatDate(d.timestamp)}</div>
+          <div class="storico-classe">${d.classe} · ${d.tipo === "cntrCR" ? "cntr CR" : "Prezzo"}</div>
+          <div class="storico-valore">Input: ${d.valore}${d.ritardo > 0 ? ` · Ritardo: ${d.ritardo}h` : ""}</div>
+          <div class="storico-risultato">${d.risultato}</div>
+          <button class="btn-del-item" data-id="${docSnap.id}">🗑</button>
+        `;
         listEl.appendChild(card);
       });
+
+      // Gestione eliminazione singola voce
       listEl.querySelectorAll(".btn-del-item").forEach(btn => {
         btn.addEventListener("click", async (e) => {
           const id = e.currentTarget.dataset.id;
           await deleteDoc(doc(db, "calcoli", id));
           e.currentTarget.closest(".storico-card").remove();
-          if (!listEl.querySelector(".storico-card")) listEl.innerHTML = "<p class='empty-state'>Nessun calcolo ancora.</p>";
+          if (!listEl.querySelector(".storico-card")) {
+            listEl.innerHTML = "<p class='empty-state'>Nessun calcolo ancora.</p>";
+          }
         });
       });
     } catch (e) {
-      listEl.innerHTML = "<p class='empty-state'>Errore: " + e.message + "</p>";
+      listEl.innerHTML = `<p class='empty-state'>Errore: ${e.message}</p>`;
     }
   });
 
@@ -480,62 +637,190 @@
     try {
       const q = query(collection(db, "calcoli"), where("uid", "==", currentUser.uid));
       const snap = await getDocs(q);
-      await Promise.all(snap.docs.map(d => deleteDoc(doc(db, "calcoli", d.id))));
+      const deletes = snap.docs.map(d => deleteDoc(doc(db, "calcoli", d.id)));
+      await Promise.all(deletes);
       document.getElementById("storico-list").innerHTML = "<p class='empty-state'>Storico cancellato.</p>";
-    } catch (e) { alert("Errore durante la cancellazione."); }
+    } catch (e) {
+      alert("Errore durante la cancellazione.");
+    }
   });
 
+  // ══════════════════════════════════════════════════════
+  //  ADMIN PANEL
+  // ══════════════════════════════════════════════════════
   document.getElementById("btn-admin").addEventListener("click", async () => {
     if (!isAdmin) return;
     openPanel("panel-admin");
     const contentEl = document.getElementById("admin-content");
     contentEl.innerHTML = "<p class='empty-state'>Caricamento dati...</p>";
+
     try {
+      // Carica tutti i calcoli
       const qCalcoli = query(collection(db, "calcoli"), orderBy("timestamp", "desc"));
       const snapCalcoli = await getDocs(qCalcoli);
+
+      // Carica tutti gli utenti
       const snapUsers = await getDocs(collection(db, "users"));
       const usersMap = {};
       snapUsers.forEach(d => { usersMap[d.id] = d.data(); });
-      if (snapCalcoli.empty) { contentEl.innerHTML = "<p class='empty-state'>Nessun dato presente.</p>"; return; }
+
+      if (snapCalcoli.empty) {
+        contentEl.innerHTML = "<p class='empty-state'>Nessun dato presente.</p>";
+        return;
+      }
+
+      // Raggruppa per utente
       const byUser = {};
       snapCalcoli.forEach(docSnap => {
         const d = docSnap.data();
         if (!byUser[d.uid]) byUser[d.uid] = { name: d.userName, calcoli: [] };
         byUser[d.uid].calcoli.push(d);
       });
-      contentEl.innerHTML = "<div class='admin-summary'>👥 Utenti: " + Object.keys(usersMap).length + " | 🧮 Calcoli totali: " + snapCalcoli.size + "</div>";
+
+      contentEl.innerHTML = `<div class="admin-summary">👥 Utenti: ${Object.keys(usersMap).length} | 🧮 Calcoli totali: ${snapCalcoli.size}</div>`;
+
+      // Carica ticket
+      const qTickets = query(collection(db, "tickets"), orderBy("timestamp", "desc"));
+      const snapTickets = await getDocs(qTickets);
+      if (!snapTickets.empty) {
+        const ticketSection = document.createElement("div");
+        ticketSection.innerHTML = "<div class='admin-tickets-title'>🎫 Ticket (" + snapTickets.size + ")</div>";
+        snapTickets.forEach(tSnap => {
+          const t = tSnap.data();
+          const card = document.createElement("div");
+          card.className = "admin-ticket-card" + (t.stato === "risolto" ? " ticket-risolto" : "");
+          card.innerHTML = "<div class='ticket-header'><span class='ticket-cat'>" + t.categoria + "</span><span class='ticket-stato " + (t.stato === "risolto" ? "stato-risolto" : "stato-aperto") + "'>" + t.stato + "</span></div><div class='ticket-user'>👤 " + t.userName + " · " + formatDate(t.timestamp) + "</div><div class='ticket-titolo'>" + t.titolo + "</div><div class='ticket-msg'>" + t.messaggio + "</div>" + (t.stato === "aperto" ? "<button class='btn-risolvi' data-id='" + tSnap.id + "'>✅ Segna come risolto</button>" : "");
+          ticketSection.appendChild(card);
+        });
+        contentEl.appendChild(ticketSection);
+        ticketSection.querySelectorAll(".btn-risolvi").forEach(btn => {
+          btn.addEventListener("click", async (e) => {
+            const id = e.currentTarget.dataset.id;
+            await setDoc(doc(db, "tickets", id), { stato: "risolto" }, { merge: true });
+            e.currentTarget.closest(".admin-ticket-card").classList.add("ticket-risolto");
+            e.currentTarget.remove();
+          });
+        });
+      }
+
       Object.entries(byUser).forEach(([uid, data]) => {
         const section = document.createElement("div");
         section.className = "admin-user-block";
-        section.innerHTML = "<div class='admin-user-header'>" + (uid === ADMIN_UID ? "🛡️ " : "👤 ") + "<strong>" + data.name + "</strong><span class='admin-count'>" + data.calcoli.length + " calcoli</span></div>";
+        const isCurrentAdmin = uid === ADMIN_UID;
+        section.innerHTML = `
+          <div class="admin-user-header">
+            ${isCurrentAdmin ? "🛡️ " : "👤 "}
+            <strong>${data.name}</strong>
+            <span class="admin-count">${data.calcoli.length} calcoli</span>
+          </div>
+        `;
         data.calcoli.slice(0, 5).forEach(c => {
           const row = document.createElement("div");
           row.className = "admin-calc-row";
-          row.innerHTML = "<span class='admin-date'>" + formatDate(c.timestamp) + "</span><span class='admin-classe'>" + c.classe + "</span><span class='admin-res'>" + c.risultato + "</span>";
+          row.innerHTML = `
+            <span class="admin-date">${formatDate(c.timestamp)}</span>
+            <span class="admin-classe">${c.classe}</span>
+            <span class="admin-res">${c.risultato}</span>
+          `;
           section.appendChild(row);
         });
         if (data.calcoli.length > 5) {
           const more = document.createElement("p");
           more.className = "admin-more";
-          more.textContent = "+ altri " + (data.calcoli.length - 5) + " calcoli";
+          more.textContent = `+ altri ${data.calcoli.length - 5} calcoli`;
           section.appendChild(more);
         }
         contentEl.appendChild(section);
       });
     } catch (e) {
-      contentEl.innerHTML = "<p class='empty-state'>Errore: " + e.message + "</p>";
+      contentEl.innerHTML = `<p class='empty-state'>Errore: ${e.message}</p>`;
     }
   });
 
+  // ══════════════════════════════════════════════════════
+  //  OVERLAY & CHIUSURA PANNELLI
+  // ══════════════════════════════════════════════════════
   document.getElementById("overlay").addEventListener("click", closeAllPanels);
   document.getElementById("btn-close-storico").addEventListener("click", closeAllPanels);
   document.getElementById("btn-close-admin").addEventListener("click", closeAllPanels);
+  document.getElementById("btn-close-supporto").addEventListener("click", closeAllPanels);
 
+  // ══════════════════════════════════════════════════════
+  //  SUPPORTO / TICKET
+  // ══════════════════════════════════════════════════════
+  const EMAILJS_PUBLIC_KEY = "BcoaIBgcIQbrwySU7";
+  const EMAILJS_SERVICE_ID = "service_yckl5g8";
+  const EMAILJS_TEMPLATE_ID = "template_oj0d18m";
+  emailjs.init(EMAILJS_PUBLIC_KEY);
+
+  document.getElementById("btn-supporto").addEventListener("click", () => {
+    openPanel("panel-supporto");
+  });
+
+  document.getElementById("btn-invia-ticket").addEventListener("click", async () => {
+    const titolo = document.getElementById("ticket-titolo").value.trim();
+    const categoria = document.getElementById("ticket-categoria").value;
+    const messaggio = document.getElementById("ticket-messaggio").value.trim();
+    const successEl = document.getElementById("supporto-success");
+    const errorEl = document.getElementById("supporto-error");
+
+    if (!titolo || !messaggio) {
+      errorEl.textContent = "Compila oggetto e messaggio.";
+      errorEl.classList.remove("hidden");
+      setTimeout(() => errorEl.classList.add("hidden"), 4000);
+      return;
+    }
+
+    const btn = document.getElementById("btn-invia-ticket");
+    btn.textContent = "Invio in corso...";
+    btn.disabled = true;
+
+    try {
+      // Salva ticket su Firestore
+      await addDoc(collection(db, "tickets"), {
+        uid: currentUser.uid,
+        userName: currentUser.displayName || currentUser.email,
+        email: currentUser.email,
+        titolo,
+        categoria,
+        messaggio,
+        stato: "aperto",
+        timestamp: Timestamp.now()
+      });
+
+      // Invia email via EmailJS
+      await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+        nome_utente: currentUser.displayName || currentUser.email,
+        email_utente: currentUser.email,
+        titolo,
+        categoria,
+        messaggio,
+        data: new Date().toLocaleString("it-IT")
+      });
+
+      successEl.classList.remove("hidden");
+      document.getElementById("ticket-titolo").value = "";
+      document.getElementById("ticket-messaggio").value = "";
+      setTimeout(() => successEl.classList.add("hidden"), 5000);
+    } catch (e) {
+      errorEl.textContent = "Errore invio: " + e.message;
+      errorEl.classList.remove("hidden");
+      setTimeout(() => errorEl.classList.add("hidden"), 5000);
+    }
+
+    btn.textContent = "📨 INVIA TICKET";
+    btn.disabled = false;
+  });
+
+  // ══════════════════════════════════════════════════════
+  //  SERVICE WORKER REGISTRATION
+  // ══════════════════════════════════════════════════════
   if ("serviceWorker" in navigator) {
     navigator.serviceWorker.register("service-worker.js")
       .then(() => console.log("Service Worker registrato ✓"))
       .catch(e => console.warn("SW error:", e));
   }
 </script>
+
 </body>
 </html>
