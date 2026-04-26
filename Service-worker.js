@@ -4,7 +4,8 @@
 //             Network-first per Firebase
 // ═══════════════════════════════════════════════════
 
-const CACHE_NAME = “cavagnola-mct-v1”;
+const CACHE_NAME = "cavagnola-mct-v2";
+
 
 // Asset da mettere in cache al primo install
 const STATIC_ASSETS = [
