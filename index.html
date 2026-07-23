@@ -134,7 +134,7 @@
           <option value="ClasseRoRo">Classe RoRo</option>
           <option value="ReachStacker">Reach Stacker</option>
           <option value="Multitrailer">Multitrailer</option>
-          <option value="PremioTurno">Premio Variabile Turno</option>
+          <option value="PremioTurno">Premio Individuale SC</option>
         </select>
       </div>
 
@@ -586,7 +586,7 @@ document.getElementById("calcola").addEventListener("click", async () => {
   if (isSemplice) {
     const intervalli = datiSemplici[classe];
     const risultato = intervalli.find(el => valore >= el.min && valore <= el.max);
-    const nomiClasse = { ReachStacker: "Reach Stacker", Multitrailer: "Multitrailer", PremioTurno: "Premio Variabile Turno" };
+    const nomiClasse = { ReachStacker: "Reach Stacker", Multitrailer: "Multitrailer", PremioTurno: "Premio Individuale SC" };
     if (risultato) {
       testoRisultato = `✅ ${nomiClasse[classe]}: ${valore} movimenti → Premio: €${risultato.premio}`;
       risultatoDaSalvare = testoRisultato.replace("✅ ", "");
