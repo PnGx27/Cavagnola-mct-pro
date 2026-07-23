@@ -1,26 +1,38 @@
 <!DOCTYPE html>
-
 <html lang="it">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>CAVAGNOLA MCT PRO</title>
-  <link rel="manifest" href="manifest.json" />
-  <meta name="theme-color" content="#f5a623" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-  <meta name="apple-mobile-web-app-title" content="Cavagnola MCT" />
-  <link rel="apple-touch-icon" href="icons/icon-192.png" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Barlow+Condensed:wght@400;600;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>CAVAGNOLA MCT PRO</title>
+<link rel="manifest" href="manifest.json" />
+<meta name="theme-color" content="#f5a623" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="Cavagnola MCT" />
+<link rel="apple-touch-icon" href="icons/icon-192.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Barlow+Condensed:wght@400;600;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="style.css" />
+<style>
+  /* ─── Stili aggiuntivi per le nuove sezioni (aggiornamento) ─── */
+  .tabella-pesatura { width: 100%; border-collapse: collapse; margin-top: 12px; }
+  .tabella-pesatura th, .tabella-pesatura td {
+    border: 1px solid rgba(255,255,255,0.15);
+    padding: 10px 12px;
+    text-align: left;
+    font-size: 0.95rem;
+  }
+  .tabella-pesatura th { background: rgba(245,166,35,0.15); font-weight: 700; }
+  .tabella-pesatura tr:nth-child(even) { background: rgba(255,255,255,0.03); }
+  .pesatura-nota { margin-top: 16px; padding: 12px; border-left: 3px solid #f5a623; background: rgba(245,166,35,0.08); font-size: 0.9rem; }
+  .pesatura-nota strong { color: #f5a623; }
+</style>
 </head>
 <body>
 
 <!-- ═══════════════════════════════════════════
      SCHERMATA LOGIN
-═══════════════════════════════════════════ -->
-
+     ═══════════════════════════════════════════ -->
 <div id="screen-login" class="screen active">
   <div class="login-box">
     <div class="logo-area">
@@ -29,34 +41,33 @@
       <p class="app-sub">Sistema Professionale · By AC</p>
     </div>
 
-```
-<div id="login-error" class="alert-error hidden"></div>
+    <div id="login-error" class="alert-error hidden"></div>
 
-<div class="form-group">
-  <label>Email</label>
-  <input type="email" id="login-email" placeholder="utente@email.com" autocomplete="email" />
-</div>
-<div class="form-group">
-  <label>Password</label>
-  <input type="password" id="login-password" placeholder="••••••••" autocomplete="current-password" />
-</div>
+    <div class="form-group">
+      <label>Email</label>
+      <input type="email" id="login-email" placeholder="utente@email.com" autocomplete="email" />
+    </div>
+    <div class="form-group">
+      <label>Password</label>
+      <input type="password" id="login-password" placeholder="••••••••" autocomplete="current-password" />
+    </div>
 
-<button class="btn-primary" id="btn-login">ACCEDI</button>
-<div class="divider"><span>oppure</span></div>
-<button class="btn-google" id="btn-login-google">
-  <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" width="20" height="20" alt="Google" />
-  Accedi con Google
-</button>
-<button class="btn-secondary" id="btn-goto-register">Non hai un account? Registrati</button>
-```
+    <button class="btn-primary" id="btn-login">ACCEDI</button>
 
+    <div class="divider"><span>oppure</span></div>
+
+    <button class="btn-google" id="btn-login-google">
+      <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" width="20" height="20" alt="Google" />
+      Accedi con Google
+    </button>
+
+    <button class="btn-secondary" id="btn-goto-register">Non hai un account? Registrati</button>
   </div>
 </div>
 
 <!-- ═══════════════════════════════════════════
      SCHERMATA REGISTRAZIONE
-═══════════════════════════════════════════ -->
-
+     ═══════════════════════════════════════════ -->
 <div id="screen-register" class="screen">
   <div class="login-box">
     <div class="logo-area">
@@ -65,37 +76,32 @@
       <p class="app-sub">Crea il tuo account</p>
     </div>
 
-```
-<div id="register-error" class="alert-error hidden"></div>
+    <div id="register-error" class="alert-error hidden"></div>
 
-<div class="form-group">
-  <label>Nome utente</label>
-  <input type="text" id="reg-name" placeholder="Es: Mario Rossi" />
-</div>
-<div class="form-group">
-  <label>Email</label>
-  <input type="email" id="reg-email" placeholder="utente@email.com" />
-</div>
-<div class="form-group">
-  <label>Password</label>
-  <input type="password" id="reg-password" placeholder="Min. 6 caratteri" />
-</div>
+    <div class="form-group">
+      <label>Nome utente</label>
+      <input type="text" id="reg-name" placeholder="Es: Mario Rossi" />
+    </div>
+    <div class="form-group">
+      <label>Email</label>
+      <input type="email" id="reg-email" placeholder="utente@email.com" />
+    </div>
+    <div class="form-group">
+      <label>Password</label>
+      <input type="password" id="reg-password" placeholder="Min. 6 caratteri" />
+    </div>
 
-<button class="btn-primary" id="btn-register">CREA ACCOUNT</button>
-<button class="btn-secondary" id="btn-goto-login">Hai già un account? Accedi</button>
-```
-
+    <button class="btn-primary" id="btn-register">CREA ACCOUNT</button>
+    <button class="btn-secondary" id="btn-goto-login">Hai già un account? Accedi</button>
   </div>
 </div>
 
 <!-- ═══════════════════════════════════════════
      SCHERMATA PRINCIPALE APP
-═══════════════════════════════════════════ -->
-
+     ═══════════════════════════════════════════ -->
 <div id="screen-app" class="screen">
 
   <!-- HEADER -->
-
   <header class="app-header">
     <div class="header-left">
       <span class="header-icon">⚓</span>
@@ -105,6 +111,7 @@
       </div>
     </div>
     <div class="header-right">
+      <button class="btn-icon" id="btn-pesatura" title="Distanza Moves">📏</button>
       <button class="btn-icon" id="btn-storico" title="Storico">📋</button>
       <button class="btn-icon" id="btn-supporto" title="Assistenza">❓</button>
       <button class="btn-icon" id="btn-admin" title="Admin Panel" style="display:none">🛡️</button>
@@ -113,9 +120,9 @@
   </header>
 
   <!-- CALCOLATRICE -->
-
   <main class="app-main">
     <div class="calc-card">
+
       <div class="form-group">
         <label>Seleziona Classe</label>
         <select id="classe">
@@ -125,49 +132,44 @@
           <option value="Classe4">Classe 4</option>
           <option value="ClasseGTW">Classe GTW</option>
           <option value="ClasseRoRo">Classe RoRo</option>
+          <option value="ReachStacker">Reach Stacker</option>
+          <option value="Multitrailer">Multitrailer</option>
+          <option value="PremioTurno">Premio Variabile Turno</option>
         </select>
       </div>
 
-```
-  <div class="form-group">
-    <label>cntr CR o Cavagnola?</label>
-    <select id="tipo">
-      <option value="cntrCR">cntr CR</option>
-      <option value="prezzo">Prezzo (€)</option>
-    </select>
-  </div>
+      <div class="form-group">
+        <label id="label-valore">Quanti cntr ha fatto la CR?</label>
+        <input type="number" id="valore" placeholder="Esempio: 154" />
+      </div>
 
-  <div class="form-group">
-    <label id="label-valore">Quanti cntr ha fatto la CR?</label>
-    <input type="number" id="valore" placeholder="Esempio: 154" />
-  </div>
+      <div class="form-group" id="group-mezzoterra">
+        <label>Mezzo o Terra?</label>
+        <select id="mezzoTerra">
+          <option value="mezzo">Mezzo</option>
+          <option value="terra">Terra</option>
+        </select>
+      </div>
 
-  <div class="form-group">
-    <label>Mezzo o Terra?</label>
-    <select id="mezzoTerra">
-      <option value="mezzo">Mezzo</option>
-      <option value="terra">Terra</option>
-    </select>
-  </div>
+      <div class="form-group" id="group-ritardo">
+        <label>Percentuale ritardo</label>
+        <select id="ritardo">
+          <option value="0">0%</option>
+          <option value="10">10%</option>
+          <option value="15">15%</option>
+        </select>
+      </div>
 
-  <div class="form-group" id="group-ritardo">
-    <label>Ore di ritardo <span class="label-note">(solo se ritardo &gt; 1hr)</span></label>
-    <input type="number" id="ritardo" min="0" value="0" />
-  </div>
+      <button class="btn-primary btn-calc" id="calcola">CALCOLA</button>
 
-  <button class="btn-primary btn-calc" id="calcola">CALCOLA</button>
-
-  <div id="output" class="output-box hidden"></div>
-</div>
-```
-
+      <div id="output" class="output-box hidden"></div>
+    </div>
   </main>
 </div>
 
 <!-- ═══════════════════════════════════════════
      PANNELLO STORICO (slide-over)
-═══════════════════════════════════════════ -->
-
+     ═══════════════════════════════════════════ -->
 <div id="panel-storico" class="side-panel">
   <div class="panel-header">
     <h2>📋 Il Tuo Storico</h2>
@@ -183,8 +185,7 @@
 
 <!-- ═══════════════════════════════════════════
      PANNELLO ADMIN (slide-over)
-═══════════════════════════════════════════ -->
-
+     ═══════════════════════════════════════════ -->
 <div id="panel-admin" class="side-panel">
   <div class="panel-header">
     <h2>🛡️ Admin Panel</h2>
@@ -196,7 +197,6 @@
 </div>
 
 <!-- PANNELLO SUPPORTO -->
-
 <div id="panel-supporto" class="side-panel">
   <div class="panel-header">
     <h2>❓ Assistenza</h2>
@@ -227,52 +227,76 @@
   </div>
 </div>
 
-<!-- OVERLAY -->
+<!-- ═══════════════════════════════════════════
+     PANNELLO DISTANZA MOVES (solo tabella, nessun calcolo)
+     ═══════════════════════════════════════════ -->
+<div id="panel-pesatura" class="side-panel">
+  <div class="panel-header">
+    <h2>📏 Pesatura dei Movimenti</h2>
+    <button class="btn-icon" id="btn-close-pesatura">✕</button>
+  </div>
+  <div class="panel-content">
+    <p class="support-intro">Ogni movimento realizzato da uno straddle carrier viene pesato in base al tipo e alla distanza percorsa.</p>
+    <table class="tabella-pesatura">
+      <thead>
+        <tr><th>Distanza / Tipo movimento</th><th>Equivalente movimenti</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Distanza &lt; 250 mt</td><td>0,8</td></tr>
+        <tr><td>Distanza 250–500 mt</td><td>1,0</td></tr>
+        <tr><td>Distanza 501–600 mt</td><td>1,2</td></tr>
+        <tr><td>Distanza 601–700 mt</td><td>1,3</td></tr>
+        <tr><td>Distanza &gt; 700 mt</td><td>1,4</td></tr>
+        <tr><td>Shifting in piazzale</td><td>0,5</td></tr>
+        <tr><td>Carico/scarico multitrailer</td><td>0,8</td></tr>
+      </tbody>
+    </table>
+    <div class="pesatura-nota">
+      1 movimento di sbarco/imbarco o di piazzale equivale al valore indicato in base alla distanza percorsa.
+      <br /><strong>1 movimento di shifting in piazzale = 0,5 movimenti.</strong>
+      <br /><strong>1 movimento di carico o scarico multitrailer = 0,8 movimenti.</strong>
+    </div>
+  </div>
+</div>
 
+<!-- OVERLAY -->
 <div id="overlay" class="overlay"></div>
 
 <!-- ═══════════════════════════════════════════
      EMAILJS + FIREBASE SDK
-═══════════════════════════════════════════ -->
-
+     ═══════════════════════════════════════════ -->
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-
 <script type="module">
-  // ─────────────────────────────────────────────────────────────
-  //  ⚠️  SOSTITUISCI QUESTI VALORI CON LA TUA CONFIGURAZIONE FIREBASE
-  //      Vai su: https://console.firebase.google.com
-  //      Progetto → Impostazioni → Le tue app → Web → Configurazione
-  // ─────────────────────────────────────────────────────────────
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-  import {
-    getAuth,
-    createUserWithEmailAndPassword,
-    signInWithEmailAndPassword,
-    signOut,
-    onAuthStateChanged,
-    updateProfile,
-    GoogleAuthProvider,
-    signInWithPopup
-  } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
-  import {
-    getFirestore,
-    collection,
-    addDoc,
-    getDocs,
-    deleteDoc,
-    doc,
-    query,
-    orderBy,
-    where,
-    setDoc,
-    getDoc,
-    Timestamp
-  } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  signOut,
+  onAuthStateChanged,
+  updateProfile,
+  GoogleAuthProvider,
+  signInWithPopup
+} from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+import {
+  getFirestore,
+  collection,
+  addDoc,
+  getDocs,
+  deleteDoc,
+  doc,
+  query,
+  orderBy,
+  where,
+  setDoc,
+  getDoc,
+  Timestamp
+} from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
-  // ══════════════════════════════════════════════════════
-  //  CONFIGURAZIONE FIREBASE — MODIFICA QUI
-  // ══════════════════════════════════════════════════════
-  const firebaseConfig = {
+// ══════════════════════════════════════════════════════
+// CONFIGURAZIONE FIREBASE
+// ══════════════════════════════════════════════════════
+const firebaseConfig = {
   apiKey: "AIzaSyBlxrMo_o0IAu1r8o3bX4vYziyorZ9k-aw",
   authDomain: "cavagnola-mct.firebaseapp.com",
   projectId: "cavagnola-mct",
@@ -281,546 +305,603 @@
   appId: "1:361604589687:web:9d5755bfbba312b2413e72"
 };
 
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
 
-  const app = initializeApp(firebaseConfig);
-  const auth = getAuth(app);
-  const db = getFirestore(app);
+const ADMIN_UID = "JyxdTgynV9cJihPWrKQzORBhM9m1";
 
-  // UID admin — metti qui il tuo UID Firebase dopo il primo login
-  // Puoi trovarlo in Firebase Console → Authentication → Users
-  const ADMIN_UID = "JyxdTgynV9cJihPWrKQzORBhM9m1";
+// ══════════════════════════════════════════════════════
+// DATI CLASSI — AGGIORNAMENTO UFFICIALE (tabella MCT Gioia Tauro)
+// ══════════════════════════════════════════════════════
+const dati = {
+  // Gru su rotaia — Classe 1 (invariata rispetto alla tabella ufficiale)
+  Classe1: [
+    { min: 135, max: 144, prezzo: 3, cntrSC: 32 },
+    { min: 145, max: 154, prezzo: 7, cntrSC: 32 },
+    { min: 155, max: 164, prezzo: 11, cntrSC: 32 },
+    { min: 165, max: 174, prezzo: 20, cntrSC: 32 },
+    { min: 175, max: 184, prezzo: 23, cntrSC: 32 },
+    { min: 185, max: 194, prezzo: 27, cntrSC: 32 },
+    { min: 195, max: 204, prezzo: 35, cntrSC: 32 },
+    { min: 205, max: Infinity, prezzo: 42, cntrSC: 32 },
+  ],
+  // Classe 2 (invariata)
+  Classe2: [
+    { min: 125, max: 134, prezzo: 3, cntrSC: 32 },
+    { min: 135, max: 144, prezzo: 7, cntrSC: 32 },
+    { min: 145, max: 154, prezzo: 11, cntrSC: 32 },
+    { min: 155, max: 164, prezzo: 20, cntrSC: 32 },
+    { min: 165, max: 174, prezzo: 23, cntrSC: 32 },
+    { min: 175, max: 184, prezzo: 27, cntrSC: 32 },
+    { min: 185, max: 194, prezzo: 35, cntrSC: 32 },
+    { min: 195, max: Infinity, prezzo: 42, cntrSC: 32 },
+  ],
+  // Classe 3 (invariata)
+  Classe3: [
+    { min: 110, max: 119, prezzo: 3, cntrSC: 30 },
+    { min: 120, max: 129, prezzo: 7, cntrSC: 30 },
+    { min: 130, max: 139, prezzo: 11, cntrSC: 30 },
+    { min: 140, max: 149, prezzo: 20, cntrSC: 30 },
+    { min: 150, max: 159, prezzo: 23, cntrSC: 30 },
+    { min: 160, max: 169, prezzo: 27, cntrSC: 30 },
+    { min: 170, max: 179, prezzo: 35, cntrSC: 30 },
+    { min: 180, max: Infinity, prezzo: 42, cntrSC: 30 },
+  ],
+  // Classe 4 (invariata)
+  Classe4: [
+    { min: 100, max: 109, prezzo: 3, cntrSC: 28 },
+    { min: 110, max: 119, prezzo: 7, cntrSC: 28 },
+    { min: 120, max: 129, prezzo: 11, cntrSC: 28 },
+    { min: 130, max: 139, prezzo: 20, cntrSC: 28 },
+    { min: 140, max: 149, prezzo: 23, cntrSC: 28 },
+    { min: 150, max: 159, prezzo: 27, cntrSC: 28 },
+    { min: 160, max: 169, prezzo: 35, cntrSC: 28 },
+    { min: 170, max: Infinity, prezzo: 42, cntrSC: 28 },
+  ],
+  // Gottwald — FIX: cntrSC era 32, corretto a 20 secondo tabella ufficiale "Premio Manovratori SC"
+  ClasseGTW: [
+    { min: 55, max: 64, prezzo: 3, cntrSC: 20 },
+    { min: 65, max: 74, prezzo: 7, cntrSC: 20 },
+    { min: 75, max: 84, prezzo: 11, cntrSC: 20 },
+    { min: 85, max: 94, prezzo: 20, cntrSC: 20 },
+    { min: 95, max: 104, prezzo: 23, cntrSC: 20 },
+    { min: 105, max: 114, prezzo: 27, cntrSC: 20 },
+    { min: 115, max: 124, prezzo: 35, cntrSC: 20 },
+    { min: 125, max: Infinity, prezzo: 42, cntrSC: 20 },
+  ],
+  // RoRo — impostato a 20 (valore confermato da Antonio)
+  ClasseRoRo: [
+    { min: 43, max: 52, prezzo: 3, cntrSC: 20 },
+    { min: 53, max: 62, prezzo: 7, cntrSC: 20 },
+    { min: 63, max: 72, prezzo: 11, cntrSC: 20 },
+    { min: 73, max: 82, prezzo: 20, cntrSC: 20 },
+    { min: 83, max: 92, prezzo: 23, cntrSC: 20 },
+    { min: 93, max: 102, prezzo: 27, cntrSC: 20 },
+    { min: 103, max: 112, prezzo: 35, cntrSC: 20 },
+    { min: 113, max: Infinity, prezzo: 42, cntrSC: 20 },
+  ],
+};
 
-  // ══════════════════════════════════════════════════════
-  //  DATI CLASSI (identici all'originale)
-  // ══════════════════════════════════════════════════════
-  const dati = {
-    Classe1: [
-      { min: 135, max: 144, prezzo: 3,  cntrSC: 32 },
-      { min: 145, max: 154, prezzo: 7,  cntrSC: 32 },
-      { min: 155, max: 164, prezzo: 11, cntrSC: 32 },
-      { min: 165, max: 174, prezzo: 20, cntrSC: 32 },
-      { min: 175, max: 184, prezzo: 23, cntrSC: 32 },
-      { min: 185, max: 194, prezzo: 27, cntrSC: 32 },
-      { min: 195, max: 204, prezzo: 35, cntrSC: 32 },
-      { min: 205, max: Infinity, prezzo: 42, cntrSC: 32 },
-    ],
-    Classe2: [
-      { min: 125, max: 134, prezzo: 3,  cntrSC: 32 },
-      { min: 135, max: 144, prezzo: 7,  cntrSC: 32 },
-      { min: 145, max: 154, prezzo: 11, cntrSC: 32 },
-      { min: 155, max: 164, prezzo: 20, cntrSC: 32 },
-      { min: 165, max: 174, prezzo: 23, cntrSC: 32 },
-      { min: 175, max: 184, prezzo: 27, cntrSC: 32 },
-      { min: 185, max: 194, prezzo: 35, cntrSC: 32 },
-      { min: 195, max: Infinity, prezzo: 42, cntrSC: 32 },
-    ],
-    Classe3: [
-      { min: 110, max: 119, prezzo: 3,  cntrSC: 30 },
-      { min: 120, max: 129, prezzo: 7,  cntrSC: 30 },
-      { min: 130, max: 139, prezzo: 11, cntrSC: 30 },
-      { min: 140, max: 149, prezzo: 20, cntrSC: 30 },
-      { min: 150, max: 159, prezzo: 23, cntrSC: 30 },
-      { min: 160, max: 169, prezzo: 27, cntrSC: 30 },
-      { min: 170, max: 179, prezzo: 35, cntrSC: 30 },
-      { min: 180, max: Infinity, prezzo: 42, cntrSC: 30 },
-    ],
-    Classe4: [
-      { min: 100, max: 109, prezzo: 3,  cntrSC: 28 },
-      { min: 110, max: 119, prezzo: 7,  cntrSC: 28 },
-      { min: 120, max: 129, prezzo: 11, cntrSC: 28 },
-      { min: 130, max: 139, prezzo: 20, cntrSC: 28 },
-      { min: 140, max: 149, prezzo: 23, cntrSC: 28 },
-      { min: 150, max: 159, prezzo: 27, cntrSC: 28 },
-      { min: 160, max: 169, prezzo: 35, cntrSC: 28 },
-      { min: 170, max: Infinity, prezzo: 42, cntrSC: 28 },
-    ],
-    ClasseGTW: [
-      { min: 55,  max: 64,  prezzo: 3,  cntrSC: 32 },
-      { min: 65,  max: 74,  prezzo: 7,  cntrSC: 32 },
-      { min: 75,  max: 84,  prezzo: 11, cntrSC: 32 },
-      { min: 85,  max: 94,  prezzo: 20, cntrSC: 32 },
-      { min: 95,  max: 104, prezzo: 23, cntrSC: 32 },
-      { min: 105, max: 114, prezzo: 27, cntrSC: 32 },
-      { min: 115, max: 124, prezzo: 35, cntrSC: 32 },
-      { min: 125, max: Infinity, prezzo: 42, cntrSC: 32 },
-    ],
-    ClasseRoRo: [
-      { min: 43,  max: 52,  prezzo: 3,  cntrSC: 32 },
-      { min: 53,  max: 62,  prezzo: 7,  cntrSC: 32 },
-      { min: 63,  max: 72,  prezzo: 11, cntrSC: 32 },
-      { min: 73,  max: 82,  prezzo: 20, cntrSC: 32 },
-      { min: 83,  max: 92,  prezzo: 23, cntrSC: 32 },
-      { min: 93,  max: 102, prezzo: 27, cntrSC: 32 },
-      { min: 103, max: 112, prezzo: 35, cntrSC: 32 },
-      { min: 113, max: Infinity, prezzo: 42, cntrSC: 32 },
-    ],
-  };
+// ══════════════════════════════════════════════════════
+// NUOVE CLASSI — Reach Stacker / Multitrailer / Premio Turno
+// (input = numero movimenti nel turno, premio diretto in €,
+//  nessuna distinzione Mezzo/Terra, nessun cntr CR)
+// ══════════════════════════════════════════════════════
+const datiSemplici = {
+  Multitrailer: [
+    { min: 55, max: 59, premio: 5 },
+    { min: 60, max: 64, premio: 10 },
+    { min: 65, max: 69, premio: 20 },
+    { min: 70, max: Infinity, premio: 25 },
+  ],
+  ReachStacker: [
+    { min: 80, max: 84, premio: 5 },
+    { min: 85, max: 89, premio: 10 },
+    { min: 90, max: 99, premio: 20 },
+    { min: 100, max: Infinity, premio: 25 },
+  ],
+  PremioTurno: [
+    { min: 32, max: 35, premio: 3 },
+    { min: 36, max: 40, premio: 7 },
+    { min: 41, max: 45, premio: 10 },
+    { min: 46, max: 50, premio: 15 },
+    { min: 51, max: 55, premio: 20 },
+    { min: 56, max: Infinity, premio: 25 },
+  ],
+};
+const CLASSI_SEMPLICI = ["ReachStacker", "Multitrailer", "PremioTurno"];
 
-  // ══════════════════════════════════════════════════════
-  //  STATO GLOBALE
-  // ══════════════════════════════════════════════════════
-  let currentUser = null;
-  let isAdmin = false;
+// ══════════════════════════════════════════════════════
+// STATO GLOBALE
+// ══════════════════════════════════════════════════════
+let currentUser = null;
+let isAdmin = false;
 
-  // ══════════════════════════════════════════════════════
-  //  UTILITY UI
-  // ══════════════════════════════════════════════════════
-  function showScreen(id) {
-    document.querySelectorAll(".screen").forEach(s => s.classList.remove("active"));
-    document.getElementById(id).classList.add("active");
+// ══════════════════════════════════════════════════════
+// UTILITY UI
+// ══════════════════════════════════════════════════════
+function showScreen(id) {
+  document.querySelectorAll(".screen").forEach(s => s.classList.remove("active"));
+  document.getElementById(id).classList.add("active");
+}
+function showError(elId, msg) {
+  const el = document.getElementById(elId);
+  el.textContent = msg;
+  el.classList.remove("hidden");
+  setTimeout(() => el.classList.add("hidden"), 5000);
+}
+function openPanel(id) {
+  document.getElementById("overlay").classList.add("active");
+  document.getElementById(id).classList.add("open");
+}
+function closeAllPanels() {
+  document.getElementById("overlay").classList.remove("active");
+  document.querySelectorAll(".side-panel").forEach(p => p.classList.remove("open"));
+}
+function formatDate(ts) {
+  if (!ts) return "—";
+  const d = ts.toDate ? ts.toDate() : new Date(ts);
+  return d.toLocaleString("it-IT", { day: "2-digit", month: "2-digit", year: "numeric", hour: "2-digit", minute: "2-digit" });
+}
+
+// ══════════════════════════════════════════════════════
+// AUTH — LOGIN / REGISTRAZIONE / LOGOUT
+// ══════════════════════════════════════════════════════
+document.getElementById("btn-login").addEventListener("click", async () => {
+  const email = document.getElementById("login-email").value.trim();
+  const pass = document.getElementById("login-password").value;
+  if (!email || !pass) return showError("login-error", "Compila tutti i campi.");
+  try {
+    await signInWithEmailAndPassword(auth, email, pass);
+  } catch (e) {
+    showError("login-error", tradurciErrore(e.code));
   }
+});
 
-  function showError(elId, msg) {
-    const el = document.getElementById(elId);
-    el.textContent = msg;
-    el.classList.remove("hidden");
-    setTimeout(() => el.classList.add("hidden"), 5000);
+document.getElementById("btn-register").addEventListener("click", async () => {
+  const name = document.getElementById("reg-name").value.trim();
+  const email = document.getElementById("reg-email").value.trim();
+  const pass = document.getElementById("reg-password").value;
+  if (!name || !email || !pass) return showError("register-error", "Compila tutti i campi.");
+  if (pass.length < 6) return showError("register-error", "Password minimo 6 caratteri.");
+  try {
+    const cred = await createUserWithEmailAndPassword(auth, email, pass);
+    await updateProfile(cred.user, { displayName: name });
+    await setDoc(doc(db, "users", cred.user.uid), {
+      name,
+      email,
+      createdAt: Timestamp.now(),
+      role: "user"
+    });
+  } catch (e) {
+    showError("register-error", tradurciErrore(e.code));
   }
+});
 
-  function openPanel(id) {
-    document.getElementById("overlay").classList.add("active");
-    document.getElementById(id).classList.add("open");
-  }
+document.getElementById("btn-logout").addEventListener("click", async () => {
+  await signOut(auth);
+});
 
-  function closeAllPanels() {
-    document.getElementById("overlay").classList.remove("active");
-    document.querySelectorAll(".side-panel").forEach(p => p.classList.remove("open"));
-  }
-
-  function formatDate(ts) {
-    if (!ts) return "—";
-    const d = ts.toDate ? ts.toDate() : new Date(ts);
-    return d.toLocaleString("it-IT", { day: "2-digit", month: "2-digit", year: "numeric", hour: "2-digit", minute: "2-digit" });
-  }
-
-  // ══════════════════════════════════════════════════════
-  //  AUTH — LOGIN / REGISTRAZIONE / LOGOUT
-  // ══════════════════════════════════════════════════════
-  document.getElementById("btn-login").addEventListener("click", async () => {
-    const email = document.getElementById("login-email").value.trim();
-    const pass  = document.getElementById("login-password").value;
-    if (!email || !pass) return showError("login-error", "Compila tutti i campi.");
-    try {
-      await signInWithEmailAndPassword(auth, email, pass);
-    } catch (e) {
-      showError("login-error", tradurciErrore(e.code));
-    }
-  });
-
-  document.getElementById("btn-register").addEventListener("click", async () => {
-    const name  = document.getElementById("reg-name").value.trim();
-    const email = document.getElementById("reg-email").value.trim();
-    const pass  = document.getElementById("reg-password").value;
-    if (!name || !email || !pass) return showError("register-error", "Compila tutti i campi.");
-    if (pass.length < 6) return showError("register-error", "Password minimo 6 caratteri.");
-    try {
-      const cred = await createUserWithEmailAndPassword(auth, email, pass);
-      await updateProfile(cred.user, { displayName: name });
-      // Salva profilo su Firestore
-      await setDoc(doc(db, "users", cred.user.uid), {
-        name,
-        email,
+const googleProvider = new GoogleAuthProvider();
+document.getElementById("btn-login-google").addEventListener("click", async () => {
+  try {
+    const cred = await signInWithPopup(auth, googleProvider);
+    const user = cred.user;
+    const userRef = doc(db, "users", user.uid);
+    const userSnap = await getDoc(userRef);
+    if (!userSnap.exists()) {
+      await setDoc(userRef, {
+        name: user.displayName || user.email,
+        email: user.email,
         createdAt: Timestamp.now(),
         role: "user"
       });
-    } catch (e) {
-      showError("register-error", tradurciErrore(e.code));
     }
-  });
+  } catch (e) {
+    showError("login-error", tradurciErrore(e.code));
+  }
+});
 
-  document.getElementById("btn-logout").addEventListener("click", async () => {
-    await signOut(auth);
-  });
+document.getElementById("btn-goto-register").addEventListener("click", () => showScreen("screen-register"));
+document.getElementById("btn-goto-login").addEventListener("click", () => showScreen("screen-login"));
 
-  // Login con Google
-  const googleProvider = new GoogleAuthProvider();
-  document.getElementById("btn-login-google").addEventListener("click", async () => {
-    try {
-      const cred = await signInWithPopup(auth, googleProvider);
-      const user = cred.user;
-      // Salva profilo su Firestore se è la prima volta
-      const userRef = doc(db, "users", user.uid);
-      const userSnap = await getDoc(userRef);
-      if (!userSnap.exists()) {
-        await setDoc(userRef, {
-          name: user.displayName || user.email,
-          email: user.email,
-          createdAt: Timestamp.now(),
-          role: "user"
-        });
-      }
-    } catch (e) {
-      showError("login-error", tradurciErrore(e.code));
-    }
-  });
+function tradurciErrore(code) {
+  const map = {
+    "auth/invalid-email": "Email non valida.",
+    "auth/user-not-found": "Utente non trovato.",
+    "auth/wrong-password": "Password errata.",
+    "auth/email-already-in-use": "Email già registrata.",
+    "auth/weak-password": "Password troppo debole.",
+    "auth/invalid-credential": "Credenziali non valide.",
+    "auth/too-many-requests": "Troppi tentativi. Riprova tra poco.",
+  };
+  return map[code] || "Errore: " + code;
+}
 
-  document.getElementById("btn-goto-register").addEventListener("click", () => showScreen("screen-register"));
-  document.getElementById("btn-goto-login").addEventListener("click", () => showScreen("screen-login"));
+// ══════════════════════════════════════════════════════
+// AUTH STATE OBSERVER
+// ══════════════════════════════════════════════════════
+onAuthStateChanged(auth, async (user) => {
+  if (user) {
+    currentUser = user;
+    isAdmin = (user.uid === ADMIN_UID);
+    document.getElementById("header-username").textContent = user.displayName || user.email;
+    document.getElementById("btn-admin").style.display = isAdmin ? "inline-flex" : "none";
+    showScreen("screen-app");
+  } else {
+    currentUser = null;
+    isAdmin = false;
+    showScreen("screen-login");
+  }
+});
 
-  function tradurciErrore(code) {
-    const map = {
-      "auth/invalid-email": "Email non valida.",
-      "auth/user-not-found": "Utente non trovato.",
-      "auth/wrong-password": "Password errata.",
-      "auth/email-already-in-use": "Email già registrata.",
-      "auth/weak-password": "Password troppo debole.",
-      "auth/invalid-credential": "Credenziali non valide.",
-      "auth/too-many-requests": "Troppi tentativi. Riprova tra poco.",
-    };
-    return map[code] || "Errore: " + code;
+// ══════════════════════════════════════════════════════
+// MAPPA PREMI TERRA (solo per le classi con distinzione Mezzo/Terra)
+// ══════════════════════════════════════════════════════
+const prezzoTerra = { 3: 2, 7: 5, 11: 8, 20: 15, 23: 18, 27: 21, 35: 27, 42: 32 };
+
+// ══════════════════════════════════════════════════════
+// LOGICA UI — mostra/nasconde campi in base alla classe scelta
+// ══════════════════════════════════════════════════════
+const classeSel = document.getElementById("classe");
+const labelValore = document.getElementById("label-valore");
+const groupRitardo = document.getElementById("group-ritardo");
+const groupMezzoTerra = document.getElementById("group-mezzoterra");
+
+function aggiornaCampiPerClasse() {
+  const classe = classeSel.value;
+  const isSemplice = CLASSI_SEMPLICI.includes(classe);
+
+  groupMezzoTerra.style.display = isSemplice ? "none" : "block";
+  groupRitardo.style.display = isSemplice ? "none" : "block";
+  labelValore.textContent = isSemplice ? "Quanti movimenti nel turno?" : "Quanti cntr ha fatto la CR?";
+}
+
+classeSel.addEventListener("change", aggiornaCampiPerClasse);
+aggiornaCampiPerClasse();
+
+// ══════════════════════════════════════════════════════
+// LOGICA CALCOLO
+// ══════════════════════════════════════════════════════
+document.getElementById("calcola").addEventListener("click", async () => {
+  const classe = classeSel.value;
+  const valore = Number(document.getElementById("valore").value);
+  const ritardo = Number(document.getElementById("ritardo").value);
+  const mezzoTerra = document.getElementById("mezzoTerra").value;
+  const outputEl = document.getElementById("output");
+  const isSemplice = CLASSI_SEMPLICI.includes(classe);
+
+  if (document.getElementById("valore").value === "" || isNaN(valore)) {
+    outputEl.textContent = "⚠️ Inserisci un valore valido.";
+    outputEl.classList.remove("hidden", "output-success");
+    outputEl.classList.add("output-error");
+    return;
   }
 
-  // ══════════════════════════════════════════════════════
-  //  AUTH STATE OBSERVER
-  // ══════════════════════════════════════════════════════
-  onAuthStateChanged(auth, async (user) => {
-    if (user) {
-      currentUser = user;
-      isAdmin = (user.uid === ADMIN_UID);
-      document.getElementById("header-username").textContent = user.displayName || user.email;
-      document.getElementById("btn-admin").style.display = isAdmin ? "inline-flex" : "none";
-      showScreen("screen-app");
+  let testoRisultato = "";
+  let risultatoDaSalvare = null;
+
+  // ─── Reach Stacker / Multitrailer / Premio Variabile Turno ───
+  if (isSemplice) {
+    const intervalli = datiSemplici[classe];
+    const risultato = intervalli.find(el => valore >= el.min && valore <= el.max);
+    const nomiClasse = { ReachStacker: "Reach Stacker", Multitrailer: "Multitrailer", PremioTurno: "Premio Variabile Turno" };
+    if (risultato) {
+      testoRisultato = `✅ ${nomiClasse[classe]}: ${valore} movimenti → Premio: €${risultato.premio}`;
+      risultatoDaSalvare = testoRisultato.replace("✅ ", "");
     } else {
-      currentUser = null;
-      isAdmin = false;
-      showScreen("screen-login");
-    }
-  });
-
-  // ══════════════════════════════════════════════════════
-  //  MAPPA PREMI TERRA
-  // ══════════════════════════════════════════════════════
-  const prezzoTerra = { 3: 2, 7: 5, 11: 8, 20: 15, 23: 18, 27: 21, 35: 27, 42: 32 };
-
-  // ══════════════════════════════════════════════════════
-  //  LOGICA CALCOLO
-  // ══════════════════════════════════════════════════════
-  const tipoSel = document.getElementById("tipo");
-  const labelValore = document.getElementById("label-valore");
-  const groupRitardo = document.getElementById("group-ritardo");
-
-  tipoSel.addEventListener("change", () => {
-    const isCntr = tipoSel.value === "cntrCR";
-    labelValore.textContent = isCntr ? "Quanti cntr ha fatto la CR?" : "Inserisci il prezzo (€):";
-    groupRitardo.style.display = isCntr ? "block" : "none";
-  });
-
-  document.getElementById("calcola").addEventListener("click", async () => {
-    const classe      = document.getElementById("classe").value;
-    const tipo        = document.getElementById("tipo").value;
-    const valore      = Number(document.getElementById("valore").value);
-    const ritardo     = Number(document.getElementById("ritardo").value);
-    const mezzoTerra  = document.getElementById("mezzoTerra").value;
-    const outputEl    = document.getElementById("output");
-    const intervalli  = dati[classe];
-
-    if (!intervalli || isNaN(valore) || document.getElementById("valore").value === "") {
-      outputEl.textContent = "⚠️ Inserisci un valore valido.";
-      outputEl.classList.remove("hidden", "output-success");
-      outputEl.classList.add("output-error");
-      return;
-    }
-
-    let testoRisultato = "";
-    let ritardoMsg = "";
-    let risultato = null;
-    const etichetta = mezzoTerra === "terra" ? "Terra" : "Mezzo";
-
-    if (tipo === "cntrCR") {
-      ritardoMsg = ritardo > 0
-        ? `\nRitardo: ${ritardo}h (-${ritardo * 10}%) → soglie abbassate del ${ritardo * 10}%`
-        : "\nNessun ritardo applicato.";
-      const fattore = ritardo > 0 ? (1 - 0.10 * ritardo) : 1;
-      risultato = intervalli.find((el) => {
-        const minR = Math.floor(el.min * fattore);
-        const maxR = el.max === Infinity ? Infinity : Math.floor(el.max * fattore);
-        return valore >= minR && valore <= maxR;
-      });
-      if (risultato) {
-        const premioFinale = mezzoTerra === "terra" ? prezzoTerra[risultato.prezzo] : risultato.prezzo;
-        testoRisultato = `✅ Cavagnola ${etichetta}: €${premioFinale} — Contenitori SC: ${risultato.cntrSC}` + ritardoMsg;
-      } else {
-        testoRisultato = "⚠️ Valore fuori intervallo per cntr CR." + ritardoMsg;
-      }
-    } else {
-      risultato = intervalli.find((el) => valore === el.prezzo);
-      if (risultato) {
-        const premioFinale = mezzoTerra === "terra" ? prezzoTerra[risultato.prezzo] : risultato.prezzo;
-        testoRisultato = `✅ cntr CR: da ${risultato.min} a ${risultato.max === Infinity ? 'oltre' : risultato.max} — Premio ${etichetta}: €${premioFinale} — SC: ${risultato.cntrSC}`;
-      } else {
-        testoRisultato = "⚠️ Prezzo non trovato tra gli intervalli.";
-      }
+      testoRisultato = `⚠️ Movimenti insufficienti per un premio in ${nomiClasse[classe]} (minimo ${intervalli[0].min}).`;
     }
 
     outputEl.textContent = testoRisultato;
     outputEl.classList.remove("hidden");
-    if (testoRisultato.startsWith("✅")) {
-      outputEl.classList.add("output-success");
-      outputEl.classList.remove("output-error");
-    } else {
-      outputEl.classList.add("output-error");
-      outputEl.classList.remove("output-success");
-    }
+    outputEl.classList.toggle("output-success", testoRisultato.startsWith("✅"));
+    outputEl.classList.toggle("output-error", !testoRisultato.startsWith("✅"));
 
-    // Salva su Firestore se c'è un risultato valido e utente loggato
-    if (currentUser && risultato) {
+    if (currentUser && risultatoDaSalvare) {
       try {
         await addDoc(collection(db, "calcoli"), {
           uid: currentUser.uid,
           userName: currentUser.displayName || currentUser.email,
-          classe,
-          tipo,
-          valore,
-          mezzoTerra,
-          ritardo: tipo === "cntrCR" ? ritardo : 0,
-          risultato: testoRisultato.replace("✅ ", ""),
+          classe, tipo: "movimentiTurno", valore, mezzoTerra: "-", ritardo: 0,
+          risultato: risultatoDaSalvare,
           timestamp: Timestamp.now()
         });
       } catch (e) {
         console.warn("Errore salvataggio storico:", e);
       }
     }
+    return;
+  }
+
+  // ─── Classi gru/nave originali — sempre in base ai cntr CR realizzati ───
+  const intervalli = dati[classe];
+  const etichetta = mezzoTerra === "terra" ? "Terra" : "Mezzo";
+
+  const ritardoMsg = ritardo > 0
+    ? `\nRitardo: ${ritardo}% → soglie abbassate del ${ritardo}%`
+    : "\nNessun ritardo applicato.";
+  const fattore = ritardo > 0 ? (1 - ritardo / 100) : 1;
+  const risultato = intervalli.find((el) => {
+    const minR = Math.floor(el.min * fattore);
+    const maxR = el.max === Infinity ? Infinity : Math.floor(el.max * fattore);
+    return valore >= minR && valore <= maxR;
   });
 
-  // ══════════════════════════════════════════════════════
-  //  STORICO UTENTE
-  // ══════════════════════════════════════════════════════
-  document.getElementById("btn-storico").addEventListener("click", async () => {
-    openPanel("panel-storico");
-    const listEl = document.getElementById("storico-list");
-    listEl.innerHTML = "<p class='empty-state'>Caricamento...</p>";
+  if (risultato) {
+    const premioFinale = mezzoTerra === "terra" ? prezzoTerra[risultato.prezzo] : risultato.prezzo;
+    testoRisultato = `✅ Cavagnola ${etichetta}: €${premioFinale} — Contenitori SC: ${risultato.cntrSC}` + ritardoMsg;
+  } else {
+    testoRisultato = "⚠️ Valore fuori intervallo per cntr CR." + ritardoMsg;
+  }
 
+  outputEl.textContent = testoRisultato;
+  outputEl.classList.remove("hidden");
+  if (testoRisultato.startsWith("✅")) {
+    outputEl.classList.add("output-success");
+    outputEl.classList.remove("output-error");
+  } else {
+    outputEl.classList.add("output-error");
+    outputEl.classList.remove("output-success");
+  }
+
+  if (currentUser && risultato) {
     try {
-      const q = query(
-        collection(db, "calcoli"),
-        where("uid", "==", currentUser.uid),
-        orderBy("timestamp", "desc")
-      );
-      const snap = await getDocs(q);
-      if (snap.empty) {
-        listEl.innerHTML = "<p class='empty-state'>Nessun calcolo ancora.</p>";
-        return;
-      }
-      listEl.innerHTML = "";
-      snap.forEach(docSnap => {
-        const d = docSnap.data();
-        const card = document.createElement("div");
-        card.className = "storico-card";
-        card.innerHTML = `
-          <div class="storico-date">${formatDate(d.timestamp)}</div>
-          <div class="storico-classe">${d.classe} · ${d.tipo === "cntrCR" ? "cntr CR" : "Prezzo"}</div>
-          <div class="storico-valore">Input: ${d.valore}${d.ritardo > 0 ? ` · Ritardo: ${d.ritardo}h` : ""}</div>
-          <div class="storico-risultato">${d.risultato}</div>
-          <button class="btn-del-item" data-id="${docSnap.id}">🗑</button>
-        `;
-        listEl.appendChild(card);
-      });
-
-      // Gestione eliminazione singola voce
-      listEl.querySelectorAll(".btn-del-item").forEach(btn => {
-        btn.addEventListener("click", async (e) => {
-          const id = e.currentTarget.dataset.id;
-          await deleteDoc(doc(db, "calcoli", id));
-          e.currentTarget.closest(".storico-card").remove();
-          if (!listEl.querySelector(".storico-card")) {
-            listEl.innerHTML = "<p class='empty-state'>Nessun calcolo ancora.</p>";
-          }
-        });
+      await addDoc(collection(db, "calcoli"), {
+        uid: currentUser.uid,
+        userName: currentUser.displayName || currentUser.email,
+        classe, tipo: "cntrCR", valore, mezzoTerra,
+        ritardo,
+        risultato: testoRisultato.replace("✅ ", ""),
+        timestamp: Timestamp.now()
       });
     } catch (e) {
-      listEl.innerHTML = `<p class='empty-state'>Errore: ${e.message}</p>`;
+      console.warn("Errore salvataggio storico:", e);
     }
-  });
+  }
+});
 
-  document.getElementById("btn-clear-storico").addEventListener("click", async () => {
-    if (!confirm("Cancellare tutto lo storico?")) return;
-    try {
-      const q = query(collection(db, "calcoli"), where("uid", "==", currentUser.uid));
-      const snap = await getDocs(q);
-      const deletes = snap.docs.map(d => deleteDoc(doc(db, "calcoli", d.id)));
-      await Promise.all(deletes);
-      document.getElementById("storico-list").innerHTML = "<p class='empty-state'>Storico cancellato.</p>";
-    } catch (e) {
-      alert("Errore durante la cancellazione.");
-    }
-  });
+// ══════════════════════════════════════════════════════
+// PANNELLO DISTANZA MOVES (solo consultazione tabella)
+// ══════════════════════════════════════════════════════
+document.getElementById("btn-pesatura").addEventListener("click", () => {
+  openPanel("panel-pesatura");
+});
+document.getElementById("btn-close-pesatura").addEventListener("click", closeAllPanels);
 
-  // ══════════════════════════════════════════════════════
-  //  ADMIN PANEL
-  // ══════════════════════════════════════════════════════
-  document.getElementById("btn-admin").addEventListener("click", async () => {
-    if (!isAdmin) return;
-    openPanel("panel-admin");
-    const contentEl = document.getElementById("admin-content");
-    contentEl.innerHTML = "<p class='empty-state'>Caricamento dati...</p>";
+// ══════════════════════════════════════════════════════
+// STORICO UTENTE
+// ══════════════════════════════════════════════════════
+document.getElementById("btn-storico").addEventListener("click", async () => {
+  openPanel("panel-storico");
+  const listEl = document.getElementById("storico-list");
+  listEl.innerHTML = "<p class='empty-state'>Caricamento...</p>";
+  try {
+    const q = query(
+      collection(db, "calcoli"),
+      where("uid", "==", currentUser.uid),
+      orderBy("timestamp", "desc")
+    );
+    const snap = await getDocs(q);
 
-    try {
-      // Carica tutti i calcoli
-      const qCalcoli = query(collection(db, "calcoli"), orderBy("timestamp", "desc"));
-      const snapCalcoli = await getDocs(qCalcoli);
-
-      // Carica tutti gli utenti
-      const snapUsers = await getDocs(collection(db, "users"));
-      const usersMap = {};
-      snapUsers.forEach(d => { usersMap[d.id] = d.data(); });
-
-      if (snapCalcoli.empty) {
-        contentEl.innerHTML = "<p class='empty-state'>Nessun dato presente.</p>";
-        return;
-      }
-
-      // Raggruppa per utente
-      const byUser = {};
-      snapCalcoli.forEach(docSnap => {
-        const d = docSnap.data();
-        if (!byUser[d.uid]) byUser[d.uid] = { name: d.userName, calcoli: [] };
-        byUser[d.uid].calcoli.push(d);
-      });
-
-      contentEl.innerHTML = `<div class="admin-summary">👥 Utenti: ${Object.keys(usersMap).length} | 🧮 Calcoli totali: ${snapCalcoli.size}</div>`;
-
-      // Carica ticket
-      const qTickets = query(collection(db, "tickets"), orderBy("timestamp", "desc"));
-      const snapTickets = await getDocs(qTickets);
-      if (!snapTickets.empty) {
-        const ticketSection = document.createElement("div");
-        ticketSection.innerHTML = "<div class='admin-tickets-title'>🎫 Ticket (" + snapTickets.size + ")</div>";
-        snapTickets.forEach(tSnap => {
-          const t = tSnap.data();
-          const card = document.createElement("div");
-          card.className = "admin-ticket-card" + (t.stato === "risolto" ? " ticket-risolto" : "");
-          card.innerHTML = "<div class='ticket-header'><span class='ticket-cat'>" + t.categoria + "</span><span class='ticket-stato " + (t.stato === "risolto" ? "stato-risolto" : "stato-aperto") + "'>" + t.stato + "</span></div><div class='ticket-user'>👤 " + t.userName + " · " + formatDate(t.timestamp) + "</div><div class='ticket-titolo'>" + t.titolo + "</div><div class='ticket-msg'>" + t.messaggio + "</div>" + (t.stato === "aperto" ? "<button class='btn-risolvi' data-id='" + tSnap.id + "'>✅ Segna come risolto</button>" : "");
-          ticketSection.appendChild(card);
-        });
-        contentEl.appendChild(ticketSection);
-        ticketSection.querySelectorAll(".btn-risolvi").forEach(btn => {
-          btn.addEventListener("click", async (e) => {
-            const id = e.currentTarget.dataset.id;
-            await setDoc(doc(db, "tickets", id), { stato: "risolto" }, { merge: true });
-            e.currentTarget.closest(".admin-ticket-card").classList.add("ticket-risolto");
-            e.currentTarget.remove();
-          });
-        });
-      }
-
-      Object.entries(byUser).forEach(([uid, data]) => {
-        const section = document.createElement("div");
-        section.className = "admin-user-block";
-        const isCurrentAdmin = uid === ADMIN_UID;
-        section.innerHTML = `
-          <div class="admin-user-header">
-            ${isCurrentAdmin ? "🛡️ " : "👤 "}
-            <strong>${data.name}</strong>
-            <span class="admin-count">${data.calcoli.length} calcoli</span>
-          </div>
-        `;
-        data.calcoli.slice(0, 5).forEach(c => {
-          const row = document.createElement("div");
-          row.className = "admin-calc-row";
-          row.innerHTML = `
-            <span class="admin-date">${formatDate(c.timestamp)}</span>
-            <span class="admin-classe">${c.classe}</span>
-            <span class="admin-res">${c.risultato}</span>
-          `;
-          section.appendChild(row);
-        });
-        if (data.calcoli.length > 5) {
-          const more = document.createElement("p");
-          more.className = "admin-more";
-          more.textContent = `+ altri ${data.calcoli.length - 5} calcoli`;
-          section.appendChild(more);
-        }
-        contentEl.appendChild(section);
-      });
-    } catch (e) {
-      contentEl.innerHTML = `<p class='empty-state'>Errore: ${e.message}</p>`;
-    }
-  });
-
-  // ══════════════════════════════════════════════════════
-  //  OVERLAY & CHIUSURA PANNELLI
-  // ══════════════════════════════════════════════════════
-  document.getElementById("overlay").addEventListener("click", closeAllPanels);
-  document.getElementById("btn-close-storico").addEventListener("click", closeAllPanels);
-  document.getElementById("btn-close-admin").addEventListener("click", closeAllPanels);
-  document.getElementById("btn-close-supporto").addEventListener("click", closeAllPanels);
-
-  // ══════════════════════════════════════════════════════
-  //  SUPPORTO / TICKET
-  // ══════════════════════════════════════════════════════
-  const EMAILJS_PUBLIC_KEY = "BcoaIBgcIQbrwySU7";
-  const EMAILJS_SERVICE_ID = "service_yckl5g8";
-  const EMAILJS_TEMPLATE_ID = "template_oj0d18m";
-  emailjs.init(EMAILJS_PUBLIC_KEY);
-
-  document.getElementById("btn-supporto").addEventListener("click", () => {
-    openPanel("panel-supporto");
-  });
-
-  document.getElementById("btn-invia-ticket").addEventListener("click", async () => {
-    const titolo = document.getElementById("ticket-titolo").value.trim();
-    const categoria = document.getElementById("ticket-categoria").value;
-    const messaggio = document.getElementById("ticket-messaggio").value.trim();
-    const successEl = document.getElementById("supporto-success");
-    const errorEl = document.getElementById("supporto-error");
-
-    if (!titolo || !messaggio) {
-      errorEl.textContent = "Compila oggetto e messaggio.";
-      errorEl.classList.remove("hidden");
-      setTimeout(() => errorEl.classList.add("hidden"), 4000);
+    if (snap.empty) {
+      listEl.innerHTML = "<p class='empty-state'>Nessun calcolo ancora.</p>";
       return;
     }
 
-    const btn = document.getElementById("btn-invia-ticket");
-    btn.textContent = "Invio in corso...";
-    btn.disabled = true;
+    listEl.innerHTML = "";
+    snap.forEach(docSnap => {
+      const d = docSnap.data();
+      const card = document.createElement("div");
+      card.className = "storico-card";
+      card.innerHTML = `
+        <div class="storico-date">${formatDate(d.timestamp)}</div>
+        <div class="storico-classe">${d.classe} · ${d.tipo === "movimentiTurno" ? "Movimenti/turno" : "cntr CR"}</div>
+        <div class="storico-valore">Input: ${d.valore}${d.ritardo > 0 ? ` · Ritardo: ${d.ritardo}%` : ""}</div>
+        <div class="storico-risultato">${d.risultato}</div>
+        <button class="btn-del-item" data-id="${docSnap.id}">🗑</button>
+      `;
+      listEl.appendChild(card);
+    });
 
-    try {
-      // Salva ticket su Firestore
-      await addDoc(collection(db, "tickets"), {
-        uid: currentUser.uid,
-        userName: currentUser.displayName || currentUser.email,
-        email: currentUser.email,
-        titolo,
-        categoria,
-        messaggio,
-        stato: "aperto",
-        timestamp: Timestamp.now()
+    listEl.querySelectorAll(".btn-del-item").forEach(btn => {
+      btn.addEventListener("click", async (e) => {
+        const id = e.currentTarget.dataset.id;
+        await deleteDoc(doc(db, "calcoli", id));
+        e.currentTarget.closest(".storico-card").remove();
+        if (!listEl.querySelector(".storico-card")) {
+          listEl.innerHTML = "<p class='empty-state'>Nessun calcolo ancora.</p>";
+        }
       });
+    });
 
-      // Invia email via EmailJS
-      await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
-        nome_utente: currentUser.displayName || currentUser.email,
-        email_utente: currentUser.email,
-        titolo,
-        categoria,
-        messaggio,
-        data: new Date().toLocaleString("it-IT")
-      });
+  } catch (e) {
+    listEl.innerHTML = `<p class='empty-state'>Errore: ${e.message}</p>`;
+  }
+});
 
-      successEl.classList.remove("hidden");
-      document.getElementById("ticket-titolo").value = "";
-      document.getElementById("ticket-messaggio").value = "";
-      setTimeout(() => successEl.classList.add("hidden"), 5000);
-    } catch (e) {
-      errorEl.textContent = "Errore invio: " + e.message;
-      errorEl.classList.remove("hidden");
-      setTimeout(() => errorEl.classList.add("hidden"), 5000);
+document.getElementById("btn-clear-storico").addEventListener("click", async () => {
+  if (!confirm("Cancellare tutto lo storico?")) return;
+  try {
+    const q = query(collection(db, "calcoli"), where("uid", "==", currentUser.uid));
+    const snap = await getDocs(q);
+    const deletes = snap.docs.map(d => deleteDoc(doc(db, "calcoli", d.id)));
+    await Promise.all(deletes);
+    document.getElementById("storico-list").innerHTML = "<p class='empty-state'>Storico cancellato.</p>";
+  } catch (e) {
+    alert("Errore durante la cancellazione.");
+  }
+});
+
+// ══════════════════════════════════════════════════════
+// ADMIN PANEL
+// ══════════════════════════════════════════════════════
+document.getElementById("btn-admin").addEventListener("click", async () => {
+  if (!isAdmin) return;
+  openPanel("panel-admin");
+  const contentEl = document.getElementById("admin-content");
+  contentEl.innerHTML = "<p class='empty-state'>Caricamento dati...</p>";
+
+  try {
+    const qCalcoli = query(collection(db, "calcoli"), orderBy("timestamp", "desc"));
+    const snapCalcoli = await getDocs(qCalcoli);
+
+    const snapUsers = await getDocs(collection(db, "users"));
+    const usersMap = {};
+    snapUsers.forEach(d => { usersMap[d.id] = d.data(); });
+
+    if (snapCalcoli.empty) {
+      contentEl.innerHTML = "<p class='empty-state'>Nessun dato presente.</p>";
+      return;
     }
 
-    btn.textContent = "📨 INVIA TICKET";
-    btn.disabled = false;
-  });
+    const byUser = {};
+    snapCalcoli.forEach(docSnap => {
+      const d = docSnap.data();
+      if (!byUser[d.uid]) byUser[d.uid] = { name: d.userName, calcoli: [] };
+      byUser[d.uid].calcoli.push(d);
+    });
 
-  // ══════════════════════════════════════════════════════
-  //  SERVICE WORKER REGISTRATION
-  // ══════════════════════════════════════════════════════
-  if ("serviceWorker" in navigator) {
-    navigator.serviceWorker.register("service-worker.js")
-      .then(() => console.log("Service Worker registrato ✓"))
-      .catch(e => console.warn("SW error:", e));
+    contentEl.innerHTML = `<div class="admin-summary">👥 Utenti: ${Object.keys(usersMap).length} | 🧮 Calcoli totali: ${snapCalcoli.size}</div>`;
+
+    const qTickets = query(collection(db, "tickets"), orderBy("timestamp", "desc"));
+    const snapTickets = await getDocs(qTickets);
+
+    if (!snapTickets.empty) {
+      const ticketSection = document.createElement("div");
+      ticketSection.innerHTML = "<div class='admin-tickets-title'>🎫 Ticket (" + snapTickets.size + ")</div>";
+      snapTickets.forEach(tSnap => {
+        const t = tSnap.data();
+        const card = document.createElement("div");
+        card.className = "admin-ticket-card" + (t.stato === "risolto" ? " ticket-risolto" : "");
+        card.innerHTML = "<div class='ticket-header'><span class='ticket-cat'>" + t.categoria + "</span><span class='ticket-stato " + (t.stato === "risolto" ? "stato-risolto" : "stato-aperto") + "'>" + t.stato + "</span></div><div class='ticket-user'>👤 " + t.userName + " · " + formatDate(t.timestamp) + "</div><div class='ticket-titolo'>" + t.titolo + "</div><div class='ticket-msg'>" + t.messaggio + "</div>" + (t.stato === "aperto" ? "<button class='btn-risolvi' data-id='" + tSnap.id + "'>✅ Segna come risolto</button>" : "");
+        ticketSection.appendChild(card);
+      });
+      contentEl.appendChild(ticketSection);
+
+      ticketSection.querySelectorAll(".btn-risolvi").forEach(btn => {
+        btn.addEventListener("click", async (e) => {
+          const id = e.currentTarget.dataset.id;
+          await setDoc(doc(db, "tickets", id), { stato: "risolto" }, { merge: true });
+          e.currentTarget.closest(".admin-ticket-card").classList.add("ticket-risolto");
+          e.currentTarget.remove();
+        });
+      });
+    }
+
+    Object.entries(byUser).forEach(([uid, data]) => {
+      const section = document.createElement("div");
+      section.className = "admin-user-block";
+      const isCurrentAdmin = uid === ADMIN_UID;
+      section.innerHTML = `
+        <div class="admin-user-header">
+          ${isCurrentAdmin ? "🛡️ " : "👤 "}
+          <strong>${data.name}</strong>
+          <span class="admin-count">${data.calcoli.length} calcoli</span>
+        </div>
+      `;
+      data.calcoli.slice(0, 5).forEach(c => {
+        const row = document.createElement("div");
+        row.className = "admin-calc-row";
+        row.innerHTML = `
+          <span class="admin-date">${formatDate(c.timestamp)}</span>
+          <span class="admin-classe">${c.classe}</span>
+          <span class="admin-res">${c.risultato}</span>
+        `;
+        section.appendChild(row);
+      });
+      if (data.calcoli.length > 5) {
+        const more = document.createElement("p");
+        more.className = "admin-more";
+        more.textContent = `+ altri ${data.calcoli.length - 5} calcoli`;
+        section.appendChild(more);
+      }
+      contentEl.appendChild(section);
+    });
+
+  } catch (e) {
+    contentEl.innerHTML = `<p class='empty-state'>Errore: ${e.message}</p>`;
   }
-</script>
+});
 
+// ══════════════════════════════════════════════════════
+// OVERLAY & CHIUSURA PANNELLI
+// ══════════════════════════════════════════════════════
+document.getElementById("overlay").addEventListener("click", closeAllPanels);
+document.getElementById("btn-close-storico").addEventListener("click", closeAllPanels);
+document.getElementById("btn-close-admin").addEventListener("click", closeAllPanels);
+document.getElementById("btn-close-supporto").addEventListener("click", closeAllPanels);
+
+// ══════════════════════════════════════════════════════
+// SUPPORTO / TICKET
+// ══════════════════════════════════════════════════════
+const EMAILJS_PUBLIC_KEY = "BcoaIBgcIQbrwySU7";
+const EMAILJS_SERVICE_ID = "service_yckl5g8";
+const EMAILJS_TEMPLATE_ID = "template_oj0d18m";
+emailjs.init(EMAILJS_PUBLIC_KEY);
+
+document.getElementById("btn-supporto").addEventListener("click", () => {
+  openPanel("panel-supporto");
+});
+
+document.getElementById("btn-invia-ticket").addEventListener("click", async () => {
+  const titolo = document.getElementById("ticket-titolo").value.trim();
+  const categoria = document.getElementById("ticket-categoria").value;
+  const messaggio = document.getElementById("ticket-messaggio").value.trim();
+  const successEl = document.getElementById("supporto-success");
+  const errorEl = document.getElementById("supporto-error");
+
+  if (!titolo || !messaggio) {
+    errorEl.textContent = "Compila oggetto e messaggio.";
+    errorEl.classList.remove("hidden");
+    setTimeout(() => errorEl.classList.add("hidden"), 4000);
+    return;
+  }
+
+  const btn = document.getElementById("btn-invia-ticket");
+  btn.textContent = "Invio in corso...";
+  btn.disabled = true;
+
+  try {
+    await addDoc(collection(db, "tickets"), {
+      uid: currentUser.uid,
+      userName: currentUser.displayName || currentUser.email,
+      email: currentUser.email,
+      titolo, categoria, messaggio,
+      stato: "aperto",
+      timestamp: Timestamp.now()
+    });
+
+    await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+      nome_utente: currentUser.displayName || currentUser.email,
+      email_utente: currentUser.email,
+      titolo, categoria, messaggio,
+      data: new Date().toLocaleString("it-IT")
+    });
+
+    successEl.classList.remove("hidden");
+    document.getElementById("ticket-titolo").value = "";
+    document.getElementById("ticket-messaggio").value = "";
+    setTimeout(() => successEl.classList.add("hidden"), 5000);
+  } catch (e) {
+    errorEl.textContent = "Errore invio: " + e.message;
+    errorEl.classList.remove("hidden");
+    setTimeout(() => errorEl.classList.add("hidden"), 5000);
+  }
+
+  btn.textContent = "📨 INVIA TICKET";
+  btn.disabled = false;
+});
+
+// ══════════════════════════════════════════════════════
+// SERVICE WORKER REGISTRATION
+// ══════════════════════════════════════════════════════
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("service-worker.js")
+    .then(() => console.log("Service Worker registrato ✓"))
+    .catch(e => console.warn("SW error:", e));
+}
+</script>
 </body>
 </html>
